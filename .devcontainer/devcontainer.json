@@ -17,7 +17,7 @@
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}",
+		"DISPLAY": ":1",
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
