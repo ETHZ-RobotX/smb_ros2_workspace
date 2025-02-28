@@ -58,10 +58,12 @@
 				"ms-vscode.cpptools-extension-pack",
 				"mhutchie.git-graph",
 				"ms-python.python",
-				"tombonnike.vscode-status-bar-format-toggle"
+				"tombonnike.vscode-status-bar-format-toggle",
+				"ms-iot.vscode-ros",
+				"redhat.vscode-xml"
 			]
 		}
 	},
-	"workspaceMount": "source=${localWorkspaceFolder},target=/smb_ros2_workspace,type=bind",
-	"workspaceFolder": "/smb_ros2_workspace"
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/smb_ros2_workspace,type=bind",
+	"workspaceFolder": "/workspace/smb_ros2_workspace"
 }
