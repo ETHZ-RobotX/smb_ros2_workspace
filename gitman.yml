@@ -16,3 +16,10 @@ sources:
     links:
       - source: .
         target: src/core/smb_gazebo
+  - name: odometry_conversion
+    repo: https://github.com/hcintas/odometry_conversion.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/core/odometry_conversion 
