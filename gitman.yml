@@ -2,10 +2,17 @@ location: dependencies
 default_group: ''
 groups: []
 sources:
-  - name: smb_description
-    repo: https://github.com/PerFrivik/smb_description.git
-    rev: main
+  - name: smb_description_ros2
+    repo: https://github.com/ETHZ-RobotX/smb_description_ros2.git
+    rev: robotx
     type: git
     links:
       - source: .
-        target: src/core/smb_description 
+        target: src/core/smb_description_ros2
+  - name: smb_gazebo_ros2
+    repo: https://github.com/ETHZ-RobotX/smb_gazebo_ros2.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/core/smb_gazebo_ros2 

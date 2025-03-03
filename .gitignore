@@ -83,4 +83,5 @@ docs/_build/
 .zsh_history
 
 # Ignore gitman dependencies
-src/core/smb_description
+src/core/smb_description_ros2
+src/core/smb_gazebo_ros2
