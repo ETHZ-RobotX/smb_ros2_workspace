@@ -8,11 +8,11 @@ sources:
     type: git
     links:
       - source: .
-        target: src/core/smb_description_ros2
+        target: src/core/smb_description
   - name: smb_gazebo_ros2
     repo: https://github.com/ETHZ-RobotX/smb_gazebo_ros2.git
     rev: robotx
     type: git
     links:
       - source: .
-        target: src/core/smb_gazebo_ros2 
+        target: src/core/smb_gazebo
