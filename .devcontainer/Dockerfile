@@ -103,15 +103,6 @@ RUN /scripts/setup/setup-fzf.sh 0.52.1
 # Install ROS2
 RUN /scripts/setup/setup-ros.sh
 
-# Install ROS2 dependencies
-RUN apt-get update && \
-    apt-get install -yq --no-install-recommends \
-    ros-jazzy-ros-gz-sim \
-    ros-jazzy-xacro \
-    ros-jazzy-joint-state-publisher \
-    ros-jazzy-ros-gz-bridge && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \
