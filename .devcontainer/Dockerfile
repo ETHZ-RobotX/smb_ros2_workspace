@@ -61,6 +61,21 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install other dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnome-terminal \
+    libfmt-dev \
+    libgoogle-glog-dev \
+    libglfw3 \
+    libglfw3-dev \
+    liblua5.2-dev \
+    x11-utils \
+    mesa-utils \
+    mesa-utils-extra \
+    websockify \
+    novnc \
+    && rm -rf /var/lib/apt/lists/*
+
 # install gitman for external repo dependency management
 RUN if grep -q "24.04" /etc/os-release; then \
       pip install --no-cache-dir --break-system-packages gitman pre-commit; \
@@ -87,6 +102,16 @@ RUN /scripts/setup/setup-fzf.sh 0.52.1
 
 # Install ROS2
 RUN /scripts/setup/setup-ros.sh
+
+# Install ROS2 dependencies
+RUN apt-get update && \
+    apt-get install -yq --no-install-recommends \
+    ros-jazzy-ros-gz-sim \
+    ros-jazzy-xacro \
+    ros-jazzy-joint-state-publisher \
+    ros-jazzy-ros-gz-bridge && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \

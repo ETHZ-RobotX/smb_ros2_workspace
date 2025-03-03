@@ -17,7 +17,7 @@
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}",
+		"DISPLAY": ":2", //
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
@@ -29,23 +29,25 @@
 			"configureZshAsDefaultShell": true
 		},
 		"ghcr.io/devcontainers/features/desktop-lite:1": {
-			"password": "robotx"
+			"password": "robotx",
+			"vncPort": 5902
 		}
 	},
 	"containerUser": "${localEnv:USER}",
 	"forwardPorts": [
 		6080,
-		5901
+		5902
 	],
 	"portsAttributes": {
 		"6080": {
 			"label": "VNC web client (noVNC)",
 			"onAutoForward": "silent"
 		},
-		"5901": {
+		"5902": {
 			"label": "VNC TCP port",
-			"onAutoForward": "silent"
+			"onAutoForward": "ignore"
 		}
+		
 	},
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
@@ -58,7 +60,14 @@
 				"ms-vscode.cpptools-extension-pack",
 				"mhutchie.git-graph",
 				"ms-python.python",
-				"tombonnike.vscode-status-bar-format-toggle"
+				"tombonnike.vscode-status-bar-format-toggle",
+				"ms-iot.vscode-ros",
+				"redhat.vscode-xml",
+				"eamodio.gitlens",
+				"ms-python.isort",
+				"ms-python.black-formatter",
+				"ms-python.debugpy",
+				"copilot.copilot"
 			]
 		}
 	},
