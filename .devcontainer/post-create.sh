@@ -4,7 +4,6 @@ set -e
 ROOT=$(dirname "$(dirname "$(readlink -f $0)")")
 
 # Setup fzf completions
-echo "eval \"\$(fzf --bash)\"" >> ~/.bashrc
 echo "source <(fzf --zsh)" >> ~/.zshrc
 
 # Store command history in the workspace which is persistent across rebuilds
