@@ -52,8 +52,9 @@ echo "Installing ROS2 $TARGET_ROS_DISTRO for Ubuntu $VERSION_ID ($UBUNTU_CODENAM
 # Install ROS2 desktop and additional tools
 apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-desktop \
-  ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   ros-$TARGET_ROS_DISTRO-rosbag2-storage-mcap \
+  ros-$TARGET_ROS_DISTRO-ros-gz-sim \
+  ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   python3-colcon-common-extensions \
   python3-colcon-clean \
   python3-rosdep
