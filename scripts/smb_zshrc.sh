@@ -52,3 +52,7 @@ echo "FastDDS configured for localhost-only communication."
 
 # Set a specific ROS domain ID to isolate communication between ROS nodes
 export ROS_DOMAIN_ID=42
+
+# Enable command-line completion for ROS 2 CLI tools and colcon build system commands
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+source /opt/ros/$ROS_DISTRO/share/ros2cli/environment/ros2-argcomplete.zsh
