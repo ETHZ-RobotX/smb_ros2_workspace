@@ -59,7 +59,14 @@
 				"ms-vscode.cpptools-extension-pack",
 				"mhutchie.git-graph",
 				"ms-python.python",
-				"tombonnike.vscode-status-bar-format-toggle"
+				"tombonnike.vscode-status-bar-format-toggle",
+				"johnpapa.vscode-peacock",
+				"ms-iot.vscode-ros",
+				"redhat.vscode-xml",
+				"eamodio.gitlens",
+				"ms-python.isort",
+				"ms-python.black-formatter",
+				"ms-python.debugpy"
 			]
 		}
 	},
