@@ -11,3 +11,6 @@ echo "export HISTFILE=${ROOT}/.zsh_history" >> ~/.zshrc
 
 # Source the smb_zshrc.sh script
 echo "source ${ROOT}/scripts/smb_zshrc.sh" >> ~/.zshrc
+
+# git config
+git config core.autocrlf false # Prevent line ending conversion on Windows
