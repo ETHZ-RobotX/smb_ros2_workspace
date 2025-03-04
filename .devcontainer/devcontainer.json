@@ -6,14 +6,16 @@
 		"args": {
 			"USERNAME": "${localEnv:USER}",
 			"USER_UID": "${localEnv:UID}",
-			"VNC_RESOLUTION": "1920x1080x32"
+			"VNC_RESOLUTION": "1920x1080x32",
+			"TARGET_PLATFORM": "generic" // for jetson, change this to "jetson"
 		}
 	},
 	"runArgs": [
 		// Uncomment it if you have problems with the auto X11 forwarding
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
 		"--shm-size=1g",
-		"--network=host"
+		"--network=host",
+		"--ipc=host"
 	],
 	"privileged": true,
 	"containerEnv": {
@@ -51,7 +53,6 @@
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},
-	// "initializeCommand": "docker pull ghcr.io/ethz-robotx/rss_workspace:main",
 	"postCreateCommand": "bash ./.devcontainer/post-create.sh",
 	"customizations": {
 		"vscode": {

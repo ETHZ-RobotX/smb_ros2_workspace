@@ -1,6 +1,14 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:24.04
+# Accept platform as a build argument
+ARG TARGET_PLATFORM=generic
+
+# Choose base image based on platform
+FROM nvcr.io/nvidia/l4t-jetpack:r36.4.0 AS jetson-base
+FROM ubuntu:24.04 AS generic-base
+
+# Select the appropriate base image
+FROM ${TARGET_PLATFORM}-base
 
 # Add metadata labels
 LABEL org.opencontainers.image.description="Development container for ROS 2 projects"
@@ -87,6 +95,9 @@ RUN /scripts/setup/setup-fzf.sh 0.52.1
 
 # Install ROS2
 RUN /scripts/setup/setup-ros.sh
+
+# Install PyTorch
+# RUN /scripts/setup/setup-torch.sh
 
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \
