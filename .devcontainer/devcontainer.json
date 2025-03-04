@@ -17,8 +17,8 @@
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
-		// "DISPLAY": ":1", // for VNC on Mac or Windows
+		// "DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
+		"DISPLAY": ":2", // for VNC on Mac or Windows
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
