@@ -38,6 +38,7 @@ RUN apt-get update && \
       git-lfs \
       curl \
       wget \
+      acl \
       ca-certificates \
       gnupg \
       lsb-release \

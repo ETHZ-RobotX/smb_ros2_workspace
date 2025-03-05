@@ -28,3 +28,12 @@ if lspci | grep -qi nvidia; then
         echo "Please install NVIDIA drivers on the host system."
     fi
 fi
+
+
+# Check if /dev/dri exists (if the system has a GPU or related device), give aceess to the user
+if [ -d /dev/dri ]; then
+    echo "/dev/dri exists, setting ACLs"
+    sudo setfacl -m u:$(whoami):rw /dev/dri/*
+else
+    echo "/dev/dri does not exist, skipping ACLs setup"
+fi
