@@ -16,3 +16,10 @@ sources:
     links:
       - source: .
         target: src/core/smb_gazebo
+  - name: smb_bringup
+    repo: https://github.com/ETHZ-RobotX/smb_bringup.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/core/smb_bringup
