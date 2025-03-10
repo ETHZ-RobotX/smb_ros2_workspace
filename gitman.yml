@@ -17,8 +17,8 @@ sources:
       - source: .
         target: src/core/smb_gazebo
   - name: odometry_conversion
-    repo: https://github.com/hcintas/odometry_conversion.git
-    rev: main
+    repo: https://github.com/ETHZ-RobotX/odometry_conversion.git
+    rev: robotx
     type: git
     links:
       - source: .
