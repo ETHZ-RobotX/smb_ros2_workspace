@@ -58,6 +58,10 @@ apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-robot-state-publisher \
   ros-$TARGET_ROS_DISTRO-joint-state-publisher \
   ros-$TARGET_ROS_DISTRO-ros-gz-bridge \
+  ros-$TARGET_ROS_DISTRO-spinnaker-camera-driver \
+  ros-$TARGET_ROS_DISTRO-image-proc \
+  ros-$TARGET_ROS_DISTRO-realsense2-camera \
+  ros-$TARGET_ROS_DISTRO-rslidar-msg \
   ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   python3-colcon-common-extensions \
   python3-colcon-clean \
