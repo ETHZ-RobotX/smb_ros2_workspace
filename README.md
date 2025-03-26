@@ -33,8 +33,6 @@ The following needs to be pressed after the command key is released:
 | <kbd>s</kbd> | 🔎 Session chooser |
 | <kbd>I</kbd> | 📦 Install plugins |
 | <kbd>z</kbd> | 🔍 Toggle zoom in pane |
-| <kbd>Ctrl</kbd>+<kbd>s</kbd> | 💾 Save sessions, windows, panes |
-| <kbd>Ctrl</kbd>+<kbd>r</kbd> | 📂 Restore from saved |
 | <kbd>Ctrl</kbd>+<kbd>l</kbd> | 🧹 Clear the terminal |
 
 <kbd>Alt</kbd>+<kbd>number</kbd> → Open the window with that number
