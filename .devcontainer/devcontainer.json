@@ -59,7 +59,9 @@
 				"ms-vscode.cpptools-extension-pack",
 				"mhutchie.git-graph",
 				"ms-python.python",
-				"tombonnike.vscode-status-bar-format-toggle"
+				"tombonnike.vscode-status-bar-format-toggle",
+				"ms-python.black-formatter",
+				"vscode-icons-team.vscode-icons"
 			]
 		}
 	},
