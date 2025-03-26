@@ -54,6 +54,8 @@ RUN apt-get update && \
       nano \
       vim \
       tmux \
+      xclip \
+      tmuxinator \
       tree \
       inetutils-ping \
       x11-apps \
