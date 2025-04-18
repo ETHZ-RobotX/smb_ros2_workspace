@@ -84,5 +84,5 @@ docs/_build/
 
 # Ignore gitman dependencies
 external/
-src/core/smb_description
-src/core/smb_gazebo
+src/
+dependencies/
