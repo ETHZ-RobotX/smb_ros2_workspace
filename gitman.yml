@@ -16,3 +16,10 @@ sources:
     links:
       - source: .
         target: src/core/smb_gazebo
+  - name: smb_powerstatus_ros2
+    repo: https://github.com/ETHZ-RobotX/smb_powerstatus_ros2.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/utils/smb_powerstatus
