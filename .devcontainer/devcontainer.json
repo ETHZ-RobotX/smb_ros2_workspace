@@ -12,6 +12,7 @@
 	"runArgs": [
 		// Uncomment it if you have problems with the auto X11 forwarding
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
+		"--volume=${localEnv:HOME}/.ssh:/home/${localEnv:USER}/.ssh:ro",
 		"--shm-size=1g",
 		"--network=host"
 	],
