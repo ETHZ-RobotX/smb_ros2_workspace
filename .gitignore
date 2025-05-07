@@ -88,4 +88,5 @@ src/core/smb_description
 src/core/smb_gazebo
 
 # Data files
-/data/rosbags
+/data/rosbags/*
+!/data/rosbags/.gitkeep
