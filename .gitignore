@@ -86,3 +86,6 @@ docs/_build/
 external/
 src/core/smb_description
 src/core/smb_gazebo
+
+# Data files
+/data/rosbags
