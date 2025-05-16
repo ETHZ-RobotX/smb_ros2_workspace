@@ -1,0 +1,25 @@
+repositories:
+  src/core/smb_description:
+    type: git
+    url: https://github.com/ETHZ-RobotX/smb_description_ros2.git
+    version: robotx
+
+  src/core/smb_gazebo:
+    type: git
+    url: https://github.com/ETHZ-RobotX/smb_gazebo_ros2.git
+    version: robotx
+
+  src/core/smb_low_level_controller_gazebo:
+    type: git
+    url: https://github.com/ETHZ-RobotX/smb_low_level_controller_gazebo_ros2.git
+    version: robotx
+
+  src/core/smb_kinematics:
+    type: git
+    url: https://github.com/ETHZ-RobotX/smb_kinematics_ros2.git
+    version: robotx
+
+  src/estimation/direct_lidar_inertial_odometry:
+    type: git
+    url: https://github.com/PerFrivik/direct_lidar_inertial_odometry.git
+    version: robotx 

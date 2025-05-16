@@ -82,11 +82,6 @@ docs/_build/
 # Ignore zsh history
 .zsh_history
 
-# Ignore gitman dependencies
-external/
-src/core/smb_description
-src/core/smb_gazebo
-
 # Data files
 /data/rosbags/*
 !/data/rosbags/.gitkeep

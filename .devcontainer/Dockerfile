@@ -38,6 +38,7 @@ RUN apt-get update && \
       net-tools \
       python3 \
       python3-pip \
+      python3-vcstool \
       python-is-python3 \
       software-properties-common && \
     add-apt-repository universe && \
