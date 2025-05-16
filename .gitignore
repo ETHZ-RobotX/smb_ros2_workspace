@@ -83,7 +83,7 @@ docs/_build/
 .zsh_history
 
 # Ignore gitman dependencies
-external/
+dependencies/
 src/core/smb_description
 src/core/smb_gazebo
 src/core/smb_low_level_controller_gazebo
