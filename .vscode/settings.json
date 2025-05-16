@@ -1,0 +1,16 @@
+{
+    "git.scanRepositories": [
+        "${workspaceFolder}/src/core",
+        "${workspaceFolder}/src/estimation"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/${ROS_DISTRO}/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/opt/ros/${ROS_DISTRO}/lib/python3.12/site-packages"
+    ],
+    "git.autoRepositoryDetection": true,
+    "git.repositoryScanMaxDepth": 5,
+    "git.ignoredRepositories": [
+    ]
+}
