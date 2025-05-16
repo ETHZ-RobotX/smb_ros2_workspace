@@ -86,6 +86,9 @@ docs/_build/
 external/
 src/core/smb_description
 src/core/smb_gazebo
+src/core/smb_low_level_controller_gazebo
+src/core/smb_kinematics
+src/estimation/direct_lidar_inertial_odometry
 
 # Data files
 /data/rosbags/*
