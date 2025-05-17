@@ -61,7 +61,8 @@ apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   python3-colcon-common-extensions \
   python3-colcon-clean \
-  python3-rosdep
+  python3-rosdep \
+  libpcap-dev
 
 # Load ROS2 environment variables
 set +u
