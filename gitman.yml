@@ -11,21 +11,21 @@ sources:
         target: src/core/smb_description
   - name: smb_gazebo_ros2
     repo: https://github.com/ETHZ-RobotX/smb_gazebo_ros2.git
-    rev: robotx
+    rev: fix/robotx-workspace
     type: git
     links:
       - source: .
         target: src/core/smb_gazebo
   - name: smb_low_level_controller_gazebo_ros2
     repo: https://github.com/ETHZ-RobotX/smb_low_level_controller_gazebo_ros2.git
-    rev: robotx
+    rev: fix/robotx-workspace
     type: git
     links:
       - source: .
         target: src/core/smb_low_level_controller_gazebo
   - name: smb_kinematics_ros2
     repo: https://github.com/ETHZ-RobotX/smb_kinematics_ros2.git
-    rev: robotx
+    rev: fix/robotx-workspace
     type: git
     links:
       - source: .
