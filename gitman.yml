@@ -49,6 +49,20 @@ sources:
     links:
       - source: .
         target: src/core/smb_ui
+  - name: graph_msf_dev
+    repo: https://github.com/agawel-bdai/graph_msf_dev.git
+    rev: fix/jazzy
+    type: git
+    links:
+      - source: .
+        target: src/estimation/graph_msf_dev
+  - name: holistic_fusion
+    repo: https://github.com/leggedrobotics/holistic_fusion.git
+    rev: feature/ros2
+    type: git
+    links:
+      - source: .
+        target: src/estimation/holistic_fusion
   - name: meta_smb_sim_ros2
     repo: https://github.com/ETHZ-RobotX/meta_smb_sim_ros2.git
     rev: main
