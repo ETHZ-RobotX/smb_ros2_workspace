@@ -56,3 +56,5 @@ export ROS_DOMAIN_ID=42
 # Enable command-line completion for ROS 2 CLI tools and colcon build system commands
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 source /opt/ros/$ROS_DISTRO/share/ros2cli/environment/ros2-argcomplete.zsh
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
