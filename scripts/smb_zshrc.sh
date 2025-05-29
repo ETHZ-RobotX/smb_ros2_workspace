@@ -58,3 +58,6 @@ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 source /opt/ros/$ROS_DISTRO/share/ros2cli/environment/ros2-argcomplete.zsh
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+# Alias for recording ROS2 bags
+alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
