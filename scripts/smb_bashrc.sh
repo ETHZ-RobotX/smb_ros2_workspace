@@ -64,7 +64,7 @@ alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
 
 # Function that wraps colcon build
 smb_build_packages_up_to() {
-    colcon build --symlink-install --merge-install --packages-up-to "$@"
+    colcon build --symlink-install --merge-install --base-paths $WORKSPACE_ROOT/src --packages-up-to "$@"
 }
 
 # Bash completion function with passthrough to colcon
@@ -74,7 +74,7 @@ _smb_build_packages_up_to_completion() {
     local FRAGMENT=${COMP_WORDS[*]:1}  # everything else on the line
 
     # Construct the autocomplete passthrough to colcon build
-    COMP_LINE="colcon build --symlink-install --merge-install --packages-up-to $FRAGMENT"
+    COMP_LINE="colcon build --symlink-install --merge-install --base-paths $WORKSPACE_ROOT/src --packages-up-to $FRAGMENT"
     COMP_WORDS=("$COMP_LINE")     # split the command line into words
     COMP_CWORD=${#COMP_WORDS[@]}  # the number of words
     COMP_POINT=${#COMP_LINE}      # the "cursor" position at the end of command
