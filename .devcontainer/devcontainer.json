@@ -5,7 +5,7 @@
 		"dockerfile": "Dockerfile",
 		"args": {
 			"BUILDKIT_INLINE_CACHE": "0",
-			"BASE_IMAGE": "smb_ros2_workspace:local",
+			"BASE_IMAGE": "smb_ros2_workspace:main",
 			"VNC_RESOLUTION": "1920x1080x32"
 		}
 	},
