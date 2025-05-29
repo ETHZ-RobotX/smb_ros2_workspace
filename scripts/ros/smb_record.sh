@@ -5,7 +5,7 @@ WORKSPACE_ROOT="$(cd "$(dirname "$(dirname "$(dirname "$(readlink -f "$0")")")")
 
 # Function to display usage information
 show_usage() {
-    echo "Usage: $0 [OPTIONS]"
+    echo "Usage: $0 [OPTIONS] [SUFFIX]"
     echo "Record ROS2 topics to MCAP format"
     echo ""
     echo "Options:"
@@ -17,13 +17,15 @@ show_usage() {
     echo "Example:"
     echo "  $0 -t '/cmd_vel /odom /imu/data'"
     echo "  $0 --all -i '/camera/image_raw /diagnostics'"
+    echo "  $0 --all test    # Will create smb_recording_TIMESTAMP_test"
     echo "  $0 --all"
 }
 
 # Default values
 TOPICS=""
-IGNORE_TOPICS="/clock"
+IGNORE_TOPICS=""
 RECORD_ALL=false
+SUFFIX=""
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -45,21 +47,24 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         *)
-            echo "Unknown option: $1"
-            show_usage
-            exit 1
+            # If it's not an option, treat it as a suffix
+            SUFFIX="$1"
+            shift
             ;;
     esac
 done
 
 # Create data directory if it doesn't exist
 DATA_DIR="${WORKSPACE_ROOT}/data/rosbags"
-echo "DATA_DIR: $DATA_DIR"
 mkdir -p "$DATA_DIR"
 
 # Generate timestamp for directory name
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-BAG_DIR="${DATA_DIR}/smb_recording_${TIMESTAMP}"
+if [ -n "$SUFFIX" ]; then
+    BAG_DIR="${DATA_DIR}/smb_bag_${TIMESTAMP}_${SUFFIX}"
+else
+    BAG_DIR="${DATA_DIR}/smb_bag_${TIMESTAMP}"
+fi
 
 # Build the ros2 bag record command
 if [ "$RECORD_ALL" = true ]; then
