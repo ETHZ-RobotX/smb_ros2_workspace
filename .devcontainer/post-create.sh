@@ -5,12 +5,15 @@ ROOT=$(dirname "$(dirname "$(readlink -f $0)")")
 
 # Setup fzf completions
 echo "source <(fzf --zsh)" >> ~/.zshrc
+echo "source <(fzf --bash)" >> ~/.bashrc
 
 # Store command history in the workspace which is persistent across rebuilds
 echo "export HISTFILE=${ROOT}/.zsh_history" >> ~/.zshrc
+echo "export HISTFILE=${ROOT}/.bash_history" >> ~/.bashrc
 
-# Source the smb_zshrc.sh script
+# Source the smb script
 echo "source ${ROOT}/scripts/smb_zshrc.sh" >> ~/.zshrc
+echo "source ${ROOT}/scripts/smb_bashrc.sh" >> ~/.bashrc
 
 # git config
 git config core.autocrlf false # Prevent line ending conversion on Windows
