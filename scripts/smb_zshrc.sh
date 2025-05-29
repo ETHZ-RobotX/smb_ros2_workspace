@@ -61,3 +61,8 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Alias for recording ROS2 bags
 alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
+
+# Alias that wraps colcon build
+smb_build_packages_up_to() {
+    colcon build --symlink-install --merge-install --packages-up-to "$@"
+}
