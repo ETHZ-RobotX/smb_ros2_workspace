@@ -82,6 +82,9 @@ docs/_build/
 # Ignore zsh history
 .zsh_history
 
+# Ignore bash history
+.bash_history
+
 # Ignore gitman dependencies
 dependencies/
 src/core/smb_description

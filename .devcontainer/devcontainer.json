@@ -27,7 +27,7 @@
 			"username": "${localEnv:USER}",
 			"userUid": "${localEnv:UID}",
 			"userGid": "${localEnv:GID}",
-			"configureZshAsDefaultShell": true
+			"configureZshAsDefaultShell": false
 		},
 		"ghcr.io/devcontainers/features/desktop-lite:1": {
 			"password": "robotx"
