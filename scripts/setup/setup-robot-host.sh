@@ -3,9 +3,38 @@
 # Exit on error
 set -e
 
+# Initialize variables
+IS_NUC=false
+IS_JETSON=false
+
+# Parse command line arguments
+if [ $# -eq 0 ]; then
+    echo "Error: No flag specified"
+    echo "Usage: sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
+    exit 1
+fi
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --nuc)
+            IS_NUC=true
+            shift
+            ;;
+        --jetson)
+            IS_JETSON=true
+            shift
+            ;;
+        *)
+            echo "Invalid flag: $1"
+            echo "Usage: sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
+            exit 1
+            ;;
+    esac
+done
+
 # Check if running with sudo
 if [ "$EUID" -ne 0 ]; then 
-    echo "Please run this script with sudo, e.g. sudo ./scripts/setup/setup-robot-host.sh"
+    echo "Please run this script with sudo, e.g. sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
     exit 1
 fi
 
@@ -28,23 +57,42 @@ apt-get update
 
 # Install essential system utilities
 echo "Installing essential system utilities..."
-apt-get install -yq --no-install-recommends \
-    sudo \
-    gh \
-    git \
-    git-lfs \
-    curl \
-    wget \
-    ca-certificates \
-    gnupg \
-    lsb-release \
-    htop \
-    glances \
-    net-tools \
-    python3 \
-    python3-pip \
-    python-is-python3 \
-    software-properties-common
+if [ "$IS_JETSON" = true ]; then
+    apt-get install -yq --no-install-recommends \
+        sudo \
+        git \
+        git-lfs \
+        curl \
+        wget \
+        ca-certificates \
+        gnupg \
+        lsb-release \
+        htop \
+        glances \
+        net-tools \
+        python3 \
+        python3-pip \
+        python-is-python3 \
+        software-properties-common
+else
+    apt-get install -yq --no-install-recommends \
+        sudo \
+        gh \
+        git \
+        git-lfs \
+        curl \
+        wget \
+        ca-certificates \
+        gnupg \
+        lsb-release \
+        htop \
+        glances \
+        net-tools \
+        python3 \
+        python3-pip \
+        python-is-python3 \
+        software-properties-common
+fi
 
 # Add universe repository
 add-apt-repository universe
@@ -86,13 +134,14 @@ echo "Running additional setup scripts..."
 echo "Setting up fzf..."
 ${ROOT}/scripts/setup/setup-fzf.sh 0.52.1
 
-# Install ROS2
-echo "Setting up ROS2..."
-${ROOT}/scripts/setup/setup-ros.sh
+# Install ROS2 and Graph MSF only if --nuc flag is set
+if [ "$IS_NUC" = true ]; then
+    echo "Setting up ROS2..."
+    ${ROOT}/scripts/setup/setup-ros.sh
 
-# Install Graph MSF
-echo "Setting up Graph MSF..."
-${ROOT}/scripts/setup/setup-graph-msf.sh
+    echo "Setting up Graph MSF..."
+    ${ROOT}/scripts/setup/setup-graph-msf.sh
+fi
 
 # Setup shell configurations
 echo "Setting up shell configurations..."
