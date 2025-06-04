@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>meta_smb_sim</name>
+  <version>0.1.0</version>
+  <description>Meta package for SMB packages on the sim robot</description>
+  <maintainer email="dishtaweera@ethz.ch">Deepana Ishtaweera</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- SMB specific dependencies -->
+  <depend>smb_description</depend>
+  <depend>smb_low_level_controller</depend>
+  <depend>smb_power_status</depend>
+  <depend>smb_kinematics</depend>
+  <depend>smb_bringup</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package> 

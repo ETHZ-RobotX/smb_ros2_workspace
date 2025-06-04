@@ -116,3 +116,10 @@ sources:
     links:
       - source: .
         target: src/hardware/rslidar_msg
+  - name: flir_camera_driver
+    repo: https://github.com/ros-drivers/flir_camera_driver.git
+    rev: humble-devel
+    type: git
+    links:
+      - source: .
+        target: src/hardware/flir_camera_driver

@@ -95,11 +95,10 @@ src/core/smb_low_level_controller_gazebo
 src/core/smb_ui
 src/hardware/rslidar_msg
 src/hardware/rslidar_sdk
+src/hardware/flir_camera_driver
 src/estimation/direct_lidar_inertial_odometry
 src/estimation/graph_msf_dev
 src/estimation/holistic_fusion
-src/meta_packages/meta_smb_real
-src/meta_packages/meta_smb_sim
 src/planning/far_planner
 src/utils/smb_power_status
 src/visualization/smb_rviz_plugins
