@@ -89,14 +89,17 @@ docs/_build/
 dependencies/
 src/core/smb_description
 src/core/smb_gazebo
+src/core/smb_low_level_controller
 src/core/smb_low_level_controller_gazebo
 src/core/smb_kinematics
 src/core/smb_ui
+src/core/smb_bringup
 src/visualization/smb_rviz_plugins
 src/estimation/direct_lidar_inertial_odometry
 src/estimation/graph_msf_dev
 src/estimation/holistic_fusion
 src/meta_packages/meta_smb_sim
+src/utils/smb_power_status
 
 # Data files
 /data/rosbags/*

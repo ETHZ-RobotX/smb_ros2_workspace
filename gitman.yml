@@ -63,3 +63,56 @@ sources:
     links:
       - source: .
         target: src/meta_packages/meta_smb_sim
+  - name: meta_smb_real_ros2
+    repo: https://github.com/ETHZ-RobotX/meta_smb_real_ros2.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/meta_packages/meta_smb_real
+  - name: smb_bringup
+    repo: https://github.com/ETHZ-RobotX/smb_bringup.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/core/smb_bringup
+  - name: smb_power_status
+    repo: https://github.com/ETHZ-RobotX/smb_powerstatus_ros2.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/utils/smb_power_status
+  - name: smb_low_level_controller_ros2
+    repo: https://github.com/ETHZ-RobotX/smb_lowlevel_controller_ros2.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/core/smb_low_level_controller
+    scripts:
+      - git submodule update --init --recursive
+  - name: far_planner
+    repo: https://github.com/ETHZ-RobotX/far_planner.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/planning/far_planner
+  - name: rslidar_sdk
+    repo: https://github.com/RoboSense-LiDAR/rslidar_sdk.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/hardware/rslidar_sdk
+    scripts:
+      - git submodule update --init --recursive
+  - name: rslidar_msg
+    repo: https://github.com/RoboSense-LiDAR/rslidar_msg.git
+    rev: master
+    type: git
+    links:
+      - source: .
+        target: src/hardware/rslidar_msg
