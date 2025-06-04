@@ -34,6 +34,24 @@
               <address>127.0.0.1</address>
             </udpv4>
           </locator>
+          <!-- NUC -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.5</address>
+            </udpv4>
+          </locator>
+          <!-- Jetson -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.7</address>
+            </udpv4>
+          </locator>
+          <!-- Raspberry Pi -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.8</address>
+            </udpv4>
+          </locator>
         </initialPeersList>
       </builtin>
     </rtps>
