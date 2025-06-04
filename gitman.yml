@@ -56,20 +56,6 @@ sources:
     links:
       - source: .
         target: src/estimation/holistic_fusion
-  - name: meta_smb_sim_ros2
-    repo: https://github.com/ETHZ-RobotX/meta_smb_sim_ros2.git
-    rev: main
-    type: git
-    links:
-      - source: .
-        target: src/meta_packages/meta_smb_sim
-  - name: meta_smb_real_ros2
-    repo: https://github.com/ETHZ-RobotX/meta_smb_real_ros2.git
-    rev: main
-    type: git
-    links:
-      - source: .
-        target: src/meta_packages/meta_smb_real
   - name: smb_bringup
     repo: https://github.com/ETHZ-RobotX/smb_bringup.git
     rev: main
