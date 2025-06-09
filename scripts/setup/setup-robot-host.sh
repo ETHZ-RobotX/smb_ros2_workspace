@@ -229,10 +229,10 @@ rm -rf /tmp/*
 echo "Robot host setup completed successfully!"
 
 # Source the appropriate shell configuration
-if [ -f "${USER_HOME}/.zshrc" ]; then
+if [ "$SHELL" = "/bin/zsh" ]; then
     echo "Sourcing .zshrc..."
     sudo -u ${USER} zsh -c "source ${USER_HOME}/.zshrc"
-elif [ -f "${USER_HOME}/.bashrc" ]; then
+elif [ "$SHELL" = "/bin/bash" ]; then
     echo "Sourcing .bashrc..."
     sudo -u ${USER} bash -c "source ${USER_HOME}/.bashrc"
 fi 
