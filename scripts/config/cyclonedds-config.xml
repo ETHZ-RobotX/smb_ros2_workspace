@@ -6,7 +6,7 @@
         <NetworkInterface autodetermine="true" priority="default" multicast="default"/>
       </Interfaces>
       <AllowMulticast>false</AllowMulticast>
-      <MaxMessageSize>65500B</MaxMessageSize>
+      <MaxMessageSize>1400B</MaxMessageSize>
     </General>
     <Internal>
       <SocketReceiveBufferSize min="10MB"/>
