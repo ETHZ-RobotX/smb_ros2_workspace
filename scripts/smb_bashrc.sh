@@ -55,7 +55,7 @@ fi
 
 # DDS Configuration
 export SMB_DDS_CONFIG_DIR="$WORKSPACE_ROOT/scripts/config"
-export SMB_CURRENT_DDS="fastdds"  # DDS Implementation: cyclonedds or fastdds
+export SMB_CURRENT_DDS="cyclonedds"  # DDS Implementation: cyclonedds or fastdds
 
 # Function to switch between DDS implementations
 smb_switch_dds() {
