@@ -18,9 +18,23 @@
       <ParticipantIndex>auto</ParticipantIndex>
       <Peers>
         <Peer address="127.0.0.1"/>
+        <!-- SMB 261 -->
         <Peer address="10.0.1.5"/>
         <Peer address="10.0.1.7"/>
         <Peer address="10.0.1.8"/>
+        <!-- SMB 262 -->
+        <Peer address="10.0.2.5"/>
+        <Peer address="10.0.2.7"/>
+        <Peer address="10.0.2.8"/>
+        <!-- SMB 263 -->
+        <Peer address="10.0.3.5"/>
+        <Peer address="10.0.3.7"/>
+        <Peer address="10.0.3.8"/>
+        <!-- SMB 264 -->
+        <Peer address="10.0.4.5"/>
+        <Peer address="10.0.4.7"/>
+        <Peer address="10.0.4.8"/>
+        <!-- Add more peers here -->
       </Peers>
     </Discovery>
   </Domain>
