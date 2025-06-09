@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>meta_smb_real</name>
+  <name>meta_smb_nuc</name>
   <version>0.1.0</version>
-  <description>Meta package for SMB packages on the real robot</description>
+  <description>Meta package for SMB packages on the NUC</description>
   <maintainer email="dishtaweera@ethz.ch">Deepana Ishtaweera</maintainer>
   <license>Proprietary</license>
 
