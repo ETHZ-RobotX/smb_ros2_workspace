@@ -72,8 +72,17 @@ if [ "$IS_JETSON" = true ]; then
         net-tools \
         python3 \
         python3-pip \
+        python3-colcon-common-extensions \
+        libpcap-dev \
         python-is-python3 \
         software-properties-common
+    
+    # Install colcon-clean using pip3 for Jetson
+    if grep -q "24.04" /etc/os-release; then
+        pip3 install --no-cache-dir --break-system-packages -U colcon-clean
+    else
+        pip3 install --no-cache-dir -U colcon-clean
+    fi
 else
     apt-get install -yq --no-install-recommends \
         sudo \
@@ -95,7 +104,7 @@ else
 fi
 
 # Add universe repository
-add-apt-repository universe
+add-apt-repository -y universe
 
 # Install development tools
 echo "Installing development tools..."
