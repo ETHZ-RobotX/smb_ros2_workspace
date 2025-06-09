@@ -53,12 +53,12 @@ if [ -f "$WORKSPACE_ROOT/install/setup.bash" ]; then
     source "$WORKSPACE_ROOT/install/setup.bash"
 fi
 
-# Configure ROS to use FastDDS as the middleware implementation (enforcing default)
-export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+# Configure ROS to use CycloneDDS as the middleware implementation
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
-# Set fastdds config file
-export FASTRTPS_DEFAULT_PROFILES_FILE=$WORKSPACE_ROOT/scripts/config/fastdds-config.xml
-echo "FastDDS configured for localhost-only communication."
+# Set CycloneDDS config file
+export CYCLONEDDS_URI="file://$WORKSPACE_ROOT/scripts/config/cyclonedds-config.xml"
+echo "CycloneDDS configured for unicast communication."
 
 # Set a specific ROS domain ID to isolate communication between ROS nodes
 export ROS_DOMAIN_ID=42
