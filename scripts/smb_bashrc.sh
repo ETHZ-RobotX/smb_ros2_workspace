@@ -55,22 +55,22 @@ fi
 
 # DDS Configuration
 export SMB_DDS_CONFIG_DIR="$WORKSPACE_ROOT/scripts/config"
-export SMB_CURRENT_DDS="cyclonedds"  # DDS Implementation: cyclonedds or fastdds
+export SMB_CURRENT_DDS="fastdds"  # DDS Implementation: cyclonedds or fastdds
 
 # Function to switch between DDS implementations
 smb_switch_dds() {
     if [ "$1" = "cyclonedds" ]; then
         export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-        export CYCLONEDDS_URI="file:/$SMB_DDS_CONFIG_DIR/cyclonedds-config.xml"
+        export CYCLONEDDS_URI="file://$SMB_DDS_CONFIG_DIR/cyclonedds-config.xml"
         export FASTRTPS_DEFAULT_PROFILES_FILE=""
         export SMB_CURRENT_DDS="cyclonedds"
-        echo "CycloneDDS configured for local-host only communication."
+        echo "CycloneDDS configured as DDS layer."
     elif [ "$1" = "fastdds" ]; then
         export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
         export CYCLONEDDS_URI=""
-        export FASTRTPS_DEFAULT_PROFILES_FILE="file:/$SMB_DDS_CONFIG_DIR/fastdds-config.xml"
+        export FASTRTPS_DEFAULT_PROFILES_FILE="$SMB_DDS_CONFIG_DIR/fastdds-config.xml"
         export SMB_CURRENT_DDS="fastdds"
-        echo "FastDDS configured for local-host only communication."
+        echo "FastDDS configured as DDS layer."
     else
         echo "Error: Invalid DDS implementation. Use 'cyclonedds' or 'fastdds'"
         return 1
