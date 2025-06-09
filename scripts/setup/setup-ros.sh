@@ -59,7 +59,7 @@ apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-ros-gz-bridge \
   ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   ros-$TARGET_ROS_DISTRO-pcl-ros \
-  ros-$TARGET_ROS_DISTRO-cyclonedds \
+  ros-$TARGET_ROS_DISTRO-rmw-cyclonedds-cpp \
   python3-colcon-common-extensions \
   python3-colcon-clean \
   python3-rosdep \

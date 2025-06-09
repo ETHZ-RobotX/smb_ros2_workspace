@@ -22,10 +22,7 @@
         <Peer address="10.0.1.7"/>
         <Peer address="10.0.1.8"/>
       </Peers>
-      <ParticipantDiscovery>
-        <DomainId>any</DomainId>
-        <Tag>${CYCLONEDDS_DOMAIN_TAG}</Tag>
-      </ParticipantDiscovery>
+      <Tag>${CYCLONEDDS_DOMAIN_TAG}</Tag>
     </Discovery>
   </Domain>
 </CycloneDDS>
