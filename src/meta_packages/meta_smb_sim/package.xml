@@ -20,6 +20,14 @@
   <depend>smb_ui</depend>
   <depend>direct_lidar_inertial_odometry</depend>
   <depend>smb_estimator_graph_ros2</depend>
+  <depend>far_planner</depend>
+  <depend>local_planner</depend>
+  <depend>terrain_analysis</depend>
+  <depend>terrain_analysis_ext</depend>
+  <depend>visualization_tols</depend>
+  <depend>waypoint_rviz_plugin</depend>
+  <depend>tare_planner</depend>
+  <depend>navigation_ext_ros2</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

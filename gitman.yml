@@ -86,6 +86,20 @@ sources:
     links:
       - source: .
         target: src/planning/far_planner
+  - name: tare_planner
+    repo: https://github.com/ETHZ-RobotX/tare_planner.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/planning/tare_planner
+  - name: navigation_ext_ros2
+    repo: https://github.com/ETHZ-RobotX/navigation_ext_ros2.git
+    rev: robotx
+    type: git
+    links:
+      - source: .
+        target: src/planning/navigation_ext_ros2
   - name: rslidar_sdk
     repo: https://github.com/RoboSense-LiDAR/rslidar_sdk.git
     rev: main

@@ -100,6 +100,8 @@ src/estimation/direct_lidar_inertial_odometry
 src/estimation/graph_msf_dev
 src/estimation/holistic_fusion
 src/planning/far_planner
+src/planning/tare_planner
+src/planning/navigation_ext_ros2
 src/utils/smb_power_status
 src/visualization/smb_rviz_plugins
 
