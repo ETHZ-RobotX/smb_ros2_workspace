@@ -188,6 +188,21 @@ fi
 echo "Setting up git configuration..."
 sudo -u ${USER} git config --global core.autocrlf false # Prevent line ending conversion on Windows
 
+# Clean up
+echo "Cleaning up..."
+apt-get clean
+pip cache purge
+rm -rf /tmp/*
+
+# Source the appropriate shell configuration
+if [ "$SHELL" = "/bin/zsh" ]; then
+    echo "Sourcing .zshrc..."
+    sudo -u ${USER} zsh -c "source ${USER_HOME}/.zshrc"
+elif [ "$SHELL" = "/bin/bash" ]; then
+    echo "Sourcing .bashrc..."
+    sudo -u ${USER} bash -c "source ${USER_HOME}/.bashrc"
+fi 
+
 # Setup tmux
 echo "Setting up tmux configuration..."
 
@@ -220,19 +235,4 @@ sudo -u ${USER} ${USER_HOME}/.tmux/plugins/tpm/bin/install_plugins
 # Stop tmux server
 sudo -u ${USER} tmux kill-server
 
-# Clean up
-echo "Cleaning up..."
-apt-get clean
-pip cache purge
-rm -rf /tmp/*
-
 echo "Robot host setup completed successfully!"
-
-# Source the appropriate shell configuration
-if [ "$SHELL" = "/bin/zsh" ]; then
-    echo "Sourcing .zshrc..."
-    sudo -u ${USER} zsh -c "source ${USER_HOME}/.zshrc"
-elif [ "$SHELL" = "/bin/bash" ]; then
-    echo "Sourcing .bashrc..."
-    sudo -u ${USER} bash -c "source ${USER_HOME}/.bashrc"
-fi 
