@@ -7,7 +7,7 @@
     <transport_descriptor>
       <transport_id>smb_udp_transport</transport_id>
       <type>UDPv4</type>
-      <maxMessageSize>1500</maxMessageSize>
+      <maxMessageSize>65500</maxMessageSize>
       <maxInitialPeersRange>100</maxInitialPeersRange>
     </transport_descriptor>
   </transport_descriptors>
