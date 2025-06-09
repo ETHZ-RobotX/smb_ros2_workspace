@@ -1,1 +1,3 @@
  scripts/ros/smb_record.sh text eol=lf
+ scripts/setup/setup-desktop-host.sh text eol=lf
+ scripts/setup/setup-robot-host.sh text eol=lf
