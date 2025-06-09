@@ -21,8 +21,8 @@
         <Peer address="10.0.1.5"/>
         <Peer address="10.0.1.7"/>
         <Peer address="10.0.1.8"/>
+        <Peer address="10.0.1.171"/>
       </Peers>
-      <Tag>${CYCLONEDDS_DOMAIN_TAG}</Tag>
     </Discovery>
   </Domain>
 </CycloneDDS>

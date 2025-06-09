@@ -53,12 +53,32 @@ if [ -f "$WORKSPACE_ROOT/install/setup.bash" ]; then
     source "$WORKSPACE_ROOT/install/setup.bash"
 fi
 
-# Configure ROS to use CycloneDDS as the middleware implementation
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+# DDS Configuration
+export SMB_DDS_CONFIG_DIR="$WORKSPACE_ROOT/scripts/config"
+export SMB_CURRENT_DDS="cyclonedds"  # DDS Implementation: cyclonedds or fastdds
 
-# Set CycloneDDS config file
-export CYCLONEDDS_URI="file://$WORKSPACE_ROOT/scripts/config/cyclonedds-config.xml"
-echo "CycloneDDS configured for unicast communication."
+# Function to switch between DDS implementations
+smb_switch_dds() {
+    if [ "$1" = "cyclonedds" ]; then
+        export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+        export CYCLONEDDS_URI="file:/$SMB_DDS_CONFIG_DIR/cyclonedds-config.xml"
+        export FASTRTPS_DEFAULT_PROFILES_FILE=""
+        export SMB_CURRENT_DDS="cyclonedds"
+        echo "CycloneDDS configured for local-host only communication."
+    elif [ "$1" = "fastdds" ]; then
+        export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+        export CYCLONEDDS_URI=""
+        export FASTRTPS_DEFAULT_PROFILES_FILE="file:/$SMB_DDS_CONFIG_DIR/fastdds-config.xml"
+        export SMB_CURRENT_DDS="fastdds"
+        echo "FastDDS configured for local-host only communication."
+    else
+        echo "Error: Invalid DDS implementation. Use 'cyclonedds' or 'fastdds'"
+        return 1
+    fi
+}
+
+# Initialize with default DDS implementation
+smb_switch_dds $SMB_CURRENT_DDS
 
 # Set a specific ROS domain ID to isolate communication between ROS nodes
 export ROS_DOMAIN_ID=42
