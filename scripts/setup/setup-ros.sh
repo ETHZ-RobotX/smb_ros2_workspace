@@ -19,8 +19,8 @@ readonly CONFIG_DIR="$(realpath "$SCRIPT_DIR"/../config)"
 # Install curl if not present
 apt-get update && apt-get install -y curl
 
-# Remove any existing ROS2 source lists
-rm -f /etc/apt/sources.list.d/ros2-latest.list
+# Clean up any existing ROS2 files
+rm -f /etc/apt/sources.list.d/ros2.list
 
 # Source the os-release file to get the Ubuntu version
 source "/etc/os-release"
