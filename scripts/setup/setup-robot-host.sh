@@ -143,6 +143,11 @@ if [ "$IS_NUC" = true ]; then
     ${ROOT}/scripts/setup/setup-graph-msf.sh
 fi
 
+# Create symlink for network configuration
+echo "Setting up network configuration..."
+ln -sf ${ROOT}/scripts/config/10-cyclone-max.conf /etc/sysctl.d/10-cyclone-max.conf
+sysctl -p /etc/sysctl.d/10-cyclone-max.conf
+
 # Setup shell configurations
 echo "Setting up shell configurations..."
 
