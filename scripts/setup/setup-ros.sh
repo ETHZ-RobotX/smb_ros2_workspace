@@ -16,22 +16,21 @@ fi
 readonly SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 readonly CONFIG_DIR="$(realpath "$SCRIPT_DIR"/../config)"
 
-# Use locally stored GPG key instead of downloading from internet
-readonly ROS_KEY_CACHED_FILE="$CONFIG_DIR/ros.key.gpg"
-readonly ROS_KEY_DESTINATION="/usr/share/keyrings/ros-archive-keyring.gpg"
+# Install curl if not present
+apt-get update && apt-get install -y curl
 
-# Copy the key file without prompting
-cp "$ROS_KEY_CACHED_FILE" "$ROS_KEY_DESTINATION"
+# Remove any existing ROS2 source lists
+rm -f /etc/apt/sources.list.d/ros2-latest.list
 
-# Configure apt repository for ROS2 packages
+# Source the os-release file to get the Ubuntu version
 source "/etc/os-release"
-readonly ROS_DEB_ENTRY="deb\
-  [arch=$(dpkg --print-architecture) signed-by=$ROS_KEY_DESTINATION]\
-  http://packages.ros.org/ros2/ubuntu
-  $UBUNTU_CODENAME
-  main"
-# shellcheck disable=SC2086
-echo $ROS_DEB_ENTRY > /etc/apt/sources.list.d/ros2.list
+
+# Get the latest ros-apt-source version
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+
+# Download and install ros-apt-source package
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb"
+apt-get install -y /tmp/ros2-apt-source.deb
 
 # Refresh package lists
 apt-get update
@@ -60,6 +59,7 @@ apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-ros-gz-bridge \
   ros-$TARGET_ROS_DISTRO-plotjuggler-ros \
   ros-$TARGET_ROS_DISTRO-pcl-ros \
+  ros-$TARGET_ROS_DISTRO-cyclonedds \
   python3-colcon-common-extensions \
   python3-colcon-clean \
   python3-rosdep \
