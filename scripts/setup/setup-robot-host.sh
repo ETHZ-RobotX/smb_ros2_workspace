@@ -217,4 +217,13 @@ apt-get clean
 pip cache purge
 rm -rf /tmp/*
 
-echo "Robot host setup completed successfully!" 
+echo "Robot host setup completed successfully!"
+
+# Source the appropriate shell configuration
+if [ -f "${USER_HOME}/.zshrc" ]; then
+    echo "Sourcing .zshrc..."
+    sudo -u ${USER} zsh -c "source ${USER_HOME}/.zshrc"
+elif [ -f "${USER_HOME}/.bashrc" ]; then
+    echo "Sourcing .bashrc..."
+    sudo -u ${USER} bash -c "source ${USER_HOME}/.bashrc"
+fi 
