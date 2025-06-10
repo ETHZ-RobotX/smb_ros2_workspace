@@ -32,6 +32,20 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Check for mutual exclusivity
+if [ "$IS_NUC" = true ] && [ "$IS_JETSON" = true ]; then
+    echo "Error: --nuc and --jetson flags are mutually exclusive"
+    echo "Usage: sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
+    exit 1
+fi
+
+# Check if at least one flag is set
+if [ "$IS_NUC" = false ] && [ "$IS_JETSON" = false ]; then
+    echo "Error: Either --nuc or --jetson flag must be specified"
+    echo "Usage: sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
+    exit 1
+fi
+
 # Check if running with sudo
 if [ "$EUID" -ne 0 ]; then 
     echo "Please run this script with sudo, e.g. sudo ./scripts/setup/setup-robot-host.sh [--nuc | --jetson]"
