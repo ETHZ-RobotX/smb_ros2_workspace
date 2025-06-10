@@ -12,10 +12,24 @@ gitman install
 
 ### Docker Build 🐳
 
+Note: For Linux users, please install Docker Engine instead of Docker Desktop. See [Docker Engine installation guide](https://docs.docker.com/engine/install/ubuntu/).
+
 To build the Docker image manually:
 
 ```bash
-docker build --file .github/docker/Dockerfile --tag smb_ros2_workspace:main .
+docker build --file .github/docker/Dockerfile --tag ghcr.io/ethz-robotx/smb_ros2_workspace .
+```
+
+or pull from github container registry:
+```bash
+docker pull ghcr.io/ethz-robotx/smb_ros2_workspace:main
+```
+
+### Network Configuration (Ubuntu Only) 🌐
+
+For optimal performance with high-bandwidth topics (like camera feeds), run this configuration script on your Ubuntu host machine (not inside the container):
+```bash
+sudo ./scripts/setup/setup-desktop-host.sh
 ```
 
 ### VSCode Dev Container Setup 🛠️
