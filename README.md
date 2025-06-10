@@ -17,7 +17,7 @@ Note: For Linux users, please install Docker Engine instead of Docker Desktop. S
 To build the Docker image manually:
 
 ```bash
-docker build --file .github/docker/Dockerfile --tag ghcr.io/ethz-robotx/smb_ros2_workspace .
+docker build --file .github/docker/Dockerfile --tag ghcr.io/ethz-robotx/smb_ros2_workspace:main .
 ```
 
 or pull from github container registry:
