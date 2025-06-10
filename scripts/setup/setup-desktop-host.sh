@@ -24,7 +24,7 @@ apt-get install -y gh
 
 # Create symlink for network configuration
 echo "Setting up network configuration..."
-ln -sf ${ROOT}/scripts/config/10-cyclone-max.conf /etc/sysctl.d/10-cyclone-max.conf
+cp ${ROOT}/scripts/config/10-cyclone-max.conf /etc/sysctl.d/10-cyclone-max.conf
 sysctl -p /etc/sysctl.d/10-cyclone-max.conf
 
 echo "Desktop host setup completed successfully!"
