@@ -104,7 +104,7 @@ _smb_build_packages_up_to_completion() {
     local FRAGMENT=${COMP_WORDS[*]:1}  # everything else on the line
 
     # Construct the autocomplete passthrough to colcon build
-    COMP_LINE="colcon build --symlink-install --merge-install --base-paths $WORKSPACE_ROOT/src --packages-up-to $FRAGMENT"
+    COMP_LINE="colcon build --symlink-install --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --packages-up-to $FRAGMENT"
     COMP_WORDS=("$COMP_LINE")     # split the command line into words
     COMP_CWORD=${#COMP_WORDS[@]}  # the number of words
     COMP_POINT=${#COMP_LINE}      # the "cursor" position at the end of command

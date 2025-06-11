@@ -75,7 +75,8 @@ else
         -DGTSAM_ROT3_EXPMAP=ON \
         -DGTSAM_USE_QUATERNIONS=ON \
         -DGTSAM_USE_SYSTEM_EIGEN=ON \
-        -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF
+        -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF \
+        -DGTSAM_WITH_TBB=OFF
     make install -j$(nproc)
     cd /tmp
     rm -rf gtsam_fork
