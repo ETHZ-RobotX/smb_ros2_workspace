@@ -28,8 +28,15 @@
   <depend>waypoint_rviz_plugin</depend>
   <depend>tare_planner</depend>
   <depend>navigation_ext_ros2</depend>
+  <!-- Added dependencies for simulation launch -->
+  <!-- <depend>tf2_ros</depend> -->
+  <depend>joy</depend>
+  <!-- <depend>teleop_twist_joy</depend> -->
+  <depend>twist_pid_controller</depend>
+  <depend>rviz2</depend>
+  <depend>twist_mux</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
   </export>
-</package> 
+</package>
