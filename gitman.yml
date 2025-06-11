@@ -58,7 +58,7 @@ sources:
         target: src/estimation/holistic_fusion
   - name: smb_bringup
     repo: https://github.com/ETHZ-RobotX/smb_bringup.git
-    rev: main
+    rev: robotx
     type: git
     links:
       - source: .
