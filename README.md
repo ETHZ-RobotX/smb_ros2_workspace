@@ -14,15 +14,16 @@ gitman install
 
 Note: For Linux users, please install Docker Engine instead of Docker Desktop. See [Docker Engine installation guide](https://docs.docker.com/engine/install/ubuntu/).
 
-To build the Docker image manually:
-
-```bash
-docker build --file .github/docker/Dockerfile --tag ghcr.io/ethz-robotx/smb_ros2_workspace:main .
-```
-
-or pull from github container registry:
+[**Recommended**] Pull from github container registry:
 ```bash
 docker pull ghcr.io/ethz-robotx/smb_ros2_workspace:main
+```
+
+or
+
+To build the Docker image manually:
+```bash
+docker build --file .github/docker/Dockerfile --tag ghcr.io/ethz-robotx/smb_ros2_workspace:main .
 ```
 
 ### Network Configuration (Ubuntu Only) 🌐
@@ -38,6 +39,7 @@ sudo ./scripts/setup/setup-desktop-host.sh
 2. Open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>)
 3. Select "Dev Containers: Reopen in Container"
 4. VSCode will automatically:
+   - Pulls the base image
    - Build the container if not already built
    - Mount your workspace
    - Install all required extensions
