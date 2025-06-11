@@ -86,7 +86,7 @@ docs/_build/
 .bash_history
 
 # Ignore gitman dependencies
-dependencies/
+# dependencies/
 src/core/smb_bringup
 src/core/smb_description
 src/core/smb_gazebo

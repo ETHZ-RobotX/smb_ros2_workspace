@@ -35,6 +35,21 @@
   <depend>twist_pid_controller</depend>
   <depend>rviz2</depend>
   <depend>twist_mux</depend>
+  <!-- <depend>smb_bringup</depend> -->
+  <!-- <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>srv_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>pcl_conversions</depend>
+  <depend>eigen</depend>
+  <depend>opencv4</depend>
+  <depend>visualization_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2_sensor_msgs</depend>
+  <depend>visibility_graph_msg</depend>
+  <depend>pcl_ros</depend> -->
 
   <export>
     <build_type>ament_cmake</build_type>
