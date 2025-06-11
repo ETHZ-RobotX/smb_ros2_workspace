@@ -14,7 +14,8 @@
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
 		"--shm-size=1g",
 		"--network=host",
-		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache"
+		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
+		"-v", "${localEnv:HOME}:/host_home"
 	],
 	"privileged": true,
 	"containerEnv": {
