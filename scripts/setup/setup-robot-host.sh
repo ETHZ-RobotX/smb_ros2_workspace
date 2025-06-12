@@ -168,7 +168,7 @@ fi
 
 # Create symlink for network configuration
 echo "Setting up network configuration..."
-ln -sf ${ROOT}/scripts/config/10-cyclone-max.conf /etc/sysctl.d/10-cyclone-max.conf
+cp ${ROOT}/scripts/config/10-cyclone-max.conf /etc/sysctl.d/10-cyclone-max.conf
 sysctl -p /etc/sysctl.d/10-cyclone-max.conf
 
 # Setup shell configurations
