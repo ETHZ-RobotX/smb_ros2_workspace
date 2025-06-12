@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Parse command line arguments
+FORCE_INSTALL=false
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -f|--force)
+            FORCE_INSTALL=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
 # Verify root privileges before proceeding
 if [[ "$EUID" -ne 0 ]] ; then
   echo "ERROR: graph-msf install must be run as root, please run:"
@@ -59,7 +74,7 @@ apt-get install -y \
 # Install GTSAM
 export PATH=/usr/local/bin:$PATH
 # Check if GTSAM is already installed by looking for a key header file
-if [ -f "/usr/local/include/gtsam/base/Vector.h" ]; then
+if [ -f "/usr/local/include/gtsam/base/Vector.h" ] && [ "$FORCE_INSTALL" = false ]; then
     echo "GTSAM is already installed"
 else
     echo "Installing GTSAM..."
