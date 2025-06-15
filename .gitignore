@@ -99,6 +99,7 @@ src/hardware/flir_camera_driver
 src/estimation/direct_lidar_inertial_odometry
 src/estimation/graph_msf_dev
 src/estimation/holistic_fusion
+src/estimation/open3d_slam_private
 src/planning/far_planner
 src/planning/tare_planner
 src/planning/navigation_ext_ros2

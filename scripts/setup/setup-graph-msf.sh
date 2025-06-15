@@ -42,13 +42,11 @@ apt-get install -y \
     ros-$TARGET_ROS_DISTRO-cv-bridge \
     ros-$TARGET_ROS_DISTRO-grid-map \
     ros-$TARGET_ROS_DISTRO-tf2-eigen \
-    ros-$TARGET_ROS_DISTRO-desktop \
     software-properties-common \
     libxrandr-dev \
     libxinerama-dev \
     libxcursor-dev \
     libssl-dev \
-    liblua5.2-dev \
     libgoogle-glog-dev \
     libx11-dev \
     libglfw3 \

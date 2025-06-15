@@ -20,6 +20,7 @@
   <depend>smb_ui</depend>
   <depend>direct_lidar_inertial_odometry</depend>
   <depend>smb_estimator_graph_ros2</depend>
+  <depend>open3d_slam_ros</depend>
   <depend>far_planner</depend>
   <depend>local_planner</depend>
   <depend>terrain_analysis</depend>
