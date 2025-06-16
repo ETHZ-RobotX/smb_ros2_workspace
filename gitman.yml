@@ -63,8 +63,6 @@ sources:
     links:
       - source: .
         target: src/estimation/open3d_slam_private
-    scripts:
-      - OLD_PWD="$(pwd)"; cd src/estimation/open3d_slam_private && git submodule update --init --recursive; cd "$OLD_PWD"
   - name: smb_bringup
     repo: https://github.com/ETHZ-RobotX/smb_bringup.git
     rev: main

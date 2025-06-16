@@ -15,7 +15,7 @@ git clone https://github.com/foxglove/mcap.git /tmp/mcap && \
     rm -rf /tmp/mcap
 
 apt-get update && \
-    apt-get install -y ros-${ROS_DISTRO}-rosbag2-storage-mcap && \
+    apt-get install -y ros-jazzy-rosbag2-storage-mcap && \
     rm -rf /var/lib/apt/lists/*
 
 apt-get update && \
