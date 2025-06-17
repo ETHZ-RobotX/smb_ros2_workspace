@@ -130,3 +130,10 @@ sources:
     links:
       - source: .
         target: src/utils/twist_pid_controller
+  - name: open3d_slam_private
+    repo: https://github.com/leggedrobotics/open3d_slam_private.git
+    rev: ros2jazzy
+    type: git
+    links:
+      - source: .
+        target: src/estimation/open3d_slam_private
