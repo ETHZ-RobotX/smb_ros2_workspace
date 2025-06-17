@@ -94,7 +94,7 @@ alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
 
 # Function that wraps colcon build
 smb_build_packages_up_to() {
-    colcon build --symlink-install --merge-install --base-paths $WORKSPACE_ROOT/src --packages-up-to "$@"
+    colcon build --symlink-install --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --packages-up-to "$@"
 }
 
 # Bash completion function with passthrough to colcon
