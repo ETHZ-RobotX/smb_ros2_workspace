@@ -89,10 +89,21 @@ source "$ROS_SETUP_PATH/share/ros2cli/environment/ros2-argcomplete.zsh"
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
+# Function to calculate half of available cores
+get_half_cores() {
+    local total_cores=$(nproc)
+    local half_cores=$((total_cores / 2))
+    # Ensure at least 1 core is used
+    echo $((half_cores > 0 ? half_cores : 1))
+}
+
 # Alias for recording ROS2 bags
 alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
 
 # Alias that wraps colcon build
+COLCON_ARGS="--log-base $WORKSPACE_ROOT/log build --symlink-install --merge-install --parallel-workers $(get_half_cores) --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --build-base $WORKSPACE_ROOT/build --install-base $WORKSPACE_ROOT/install"
+
 smb_build_packages_up_to() {
-    colcon build --symlink-install --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --packages-up-to "$@"
+    echo "Building packages up to: $@ using $(get_half_cores) cores..."
+    colcon $COLCON_ARGS --packages-up-to "$@"
 }
