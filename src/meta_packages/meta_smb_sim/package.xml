@@ -29,6 +29,8 @@
   <depend>tare_planner</depend>
   <depend>navigation_ext_ros2</depend>
   <depend>smb_estimator_graph_ros2</depend>
+  <depend>joy_panel_cpp</depend>
+  <depend>topic_tools</depend>
   <depend>open3d_slam_ros</depend>
 
   <export>
