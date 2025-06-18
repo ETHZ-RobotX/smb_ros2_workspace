@@ -12,7 +12,7 @@
   <!-- SMB specific dependencies -->
   <depend>smb_description</depend>
   <depend>smb_low_level_controller_gazebo</depend>
-  <depend>smb_power_status</depend>
+  <depend>smb_powerstatus</depend>
   <depend>smb_kinematics</depend>
   <depend>smb_bringup</depend>
   <depend>smb_gazebo</depend>
