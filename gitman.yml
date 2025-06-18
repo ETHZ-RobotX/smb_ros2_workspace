@@ -4,35 +4,35 @@ groups: []
 sources:
   - name: smb_description_ros2
     repo: https://github.com/ETHZ-RobotX/smb_description_ros2.git
-    rev: robotx-sim
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/core/smb_description
   - name: smb_gazebo_ros2
     repo: https://github.com/ETHZ-RobotX/smb_gazebo_ros2.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/core/smb_gazebo
   - name: smb_low_level_controller_gazebo_ros2
     repo: https://github.com/ETHZ-RobotX/smb_low_level_controller_gazebo_ros2.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/core/smb_low_level_controller_gazebo
   - name: smb_kinematics_ros2
     repo: https://github.com/ETHZ-RobotX/smb_kinematics_ros2.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/core/smb_kinematics
   - name: direct_lidar_inertial_odometry
     repo: https://github.com/PerFrivik/direct_lidar_inertial_odometry.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
@@ -60,7 +60,7 @@ sources:
         target: src/estimation/holistic_fusion
   - name: smb_bringup
     repo: https://github.com/ETHZ-RobotX/smb_bringup.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
@@ -83,21 +83,21 @@ sources:
       - git submodule update --init --recursive
   - name: far_planner
     repo: https://github.com/ETHZ-RobotX/far_planner.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/planning/far_planner
   - name: tare_planner
     repo: https://github.com/ETHZ-RobotX/tare_planner.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
         target: src/planning/tare_planner
   - name: navigation_ext_ros2
     repo: https://github.com/ETHZ-RobotX/navigation_ext_ros2.git
-    rev: robotx
+    rev: sim_release
     type: git
     links:
       - source: .
