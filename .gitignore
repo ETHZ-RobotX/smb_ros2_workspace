@@ -93,6 +93,7 @@ src/core/smb_kinematics
 src/core/smb_low_level_controller
 src/core/smb_low_level_controller_gazebo
 src/core/smb_ui
+src/core/smb_wheel_odometry
 src/hardware/rslidar_msg
 src/hardware/rslidar_sdk
 src/hardware/flir_camera_driver

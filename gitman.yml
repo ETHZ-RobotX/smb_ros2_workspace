@@ -139,3 +139,10 @@ sources:
     links:
       - source: .
         target: src/estimation/open3d_slam_private
+  - name: wheel_odometry
+    repo: https://github.com/ETHZ-RobotX/wheel_odometry_ros2.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/core/smb_wheel_odometry

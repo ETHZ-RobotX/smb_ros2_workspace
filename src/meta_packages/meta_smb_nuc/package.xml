@@ -31,6 +31,7 @@
   <depend>navigation_ext_ros2</depend>
   <depend>smb_estimator_graph_ros2</depend>
   <depend>open3d_slam_ros</depend>
+  <depend>smb_wheel_odometry</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
