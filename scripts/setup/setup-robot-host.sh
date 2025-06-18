@@ -164,6 +164,9 @@ if [ "$IS_NUC" = true ]; then
 
     echo "Setting up Graph MSF..."
     ${ROOT}/scripts/setup/setup-graph-msf.sh
+
+    echo "Setting up Open3d SLAM..."
+    ${ROOT}/scripts/setup/setup-open3d.sh
 fi
 
 # Create symlink for network configuration

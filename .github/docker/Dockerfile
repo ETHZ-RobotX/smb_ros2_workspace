@@ -93,6 +93,9 @@ RUN /scripts/setup/setup-ros.sh
 # Install Graph MSF
 RUN /scripts/setup/setup-graph-msf.sh
 
+# Install Open3D
+RUN /scripts/setup/setup-open3d.sh
+
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \
     apt-get install -y gettext && \
