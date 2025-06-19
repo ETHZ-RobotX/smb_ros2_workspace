@@ -139,3 +139,10 @@ sources:
     links:
       - source: .
         target: src/estimation/open3d_slam_private
+  - name: object_detection
+    repo: https://github.com/ETHZ-RobotX/smb_object_detection_ros2.git
+    rev: docker
+    type: git
+    links:
+      - source: .
+        target: src/detection/object_detection
