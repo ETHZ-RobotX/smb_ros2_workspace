@@ -28,9 +28,10 @@ if [ $? -ne 0 ]; then
   echo "ERROR: CMake is not installed"
   exit 1
 fi
-CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')  
-if [ "$CMAKE_VERSION" != "3.29.2" ]; then  
-  echo "ERROR: CMake version is not 3.29.2 (found $CMAKE_VERSION)"  
+CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')
+REQUIRED_CMAKE_VERSION="3.29.2"
+if [ "$(printf '%s\n' "$REQUIRED_CMAKE_VERSION" "$CMAKE_VERSION" | sort -V | head -n1)" != "$REQUIRED_CMAKE_VERSION" ]; then
+  echo "ERROR: CMake version must be at least $REQUIRED_CMAKE_VERSION (found $CMAKE_VERSION)"
   exit 1
 fi
 
