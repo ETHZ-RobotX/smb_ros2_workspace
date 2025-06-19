@@ -50,8 +50,6 @@ CMAKE_BINARY_NAME="cmake-${CMAKE_VERSION}-linux-${ARCH}.sh"
 CMAKE_CHECKSUM_NAME="cmake-${CMAKE_VERSION}-SHA-256.txt"
 TMP_DIR=/tmp/cmake
 mkdir -p "${TMP_DIR}"
-
-echo "${TMP_DIR}"
 cd "${TMP_DIR}"
 
 curl -sSL "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_BINARY_NAME}" -O

@@ -3,6 +3,20 @@ set -e
 
 ROOT=$(dirname "$(dirname "$(readlink -f $0)")")
 
+# Set environment variables for CMake to resolve Unwind and other dependencies
+ARCH=$(uname -m)
+if [[ "$ARCH" == "x86_64" ]]; then
+  LIB_PATH="/usr/lib/x86_64-linux-gnu"
+elif [[ "$ARCH" == "aarch64" ]]; then
+  LIB_PATH="/usr/lib/aarch64-linux-gnu"
+else
+  echo "ERROR: Unsupported architecture: $ARCH"
+  exit 1
+fi
+
+echo "export CMAKE_INCLUDE_PATH=/usr/include:\$CMAKE_INCLUDE_PATH" >> "${HOME}/.bashrc"
+echo "export CMAKE_LIBRARY_PATH=${LIB_PATH}:\$CMAKE_LIBRARY_PATH" >> "${HOME}/.bashrc"
+
 # Setup fzf completions
 echo "source <(fzf --zsh)" >> ~/.zshrc
 echo "source <(fzf --bash)" >> ~/.bashrc

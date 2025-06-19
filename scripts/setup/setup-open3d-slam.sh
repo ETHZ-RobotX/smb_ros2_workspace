@@ -28,8 +28,9 @@ if [ $? -ne 0 ]; then
   echo "ERROR: CMake is not installed"
   exit 1
 fi
-if [ $(cmake --version | grep -c "3.29.2") -ne 1 ]; then
-  echo "ERROR: CMake version is not 3.29.2"
+CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')  
+if [ "$CMAKE_VERSION" != "3.29.2" ]; then  
+  echo "ERROR: CMake version is not 3.29.2 (found $CMAKE_VERSION)"  
   exit 1
 fi
 
@@ -84,9 +85,5 @@ make -j$(nproc)
 make install
 cd /tmp
 rm -rf Open3D-${OPEN3D_VERSION}
-
-# Set environment variables for CMake to resolve Unwind and other dependencies
-echo 'export CMAKE_INCLUDE_PATH=/usr/include:$CMAKE_INCLUDE_PATH' >> "${HOME}/.bashrc"
-echo 'export CMAKE_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$CMAKE_LIBRARY_PATH' >> "${HOME}/.bashrc"
 
 echo "Open3d dependencies installed successfully for ROS2 $TARGET_ROS_DISTRO"
