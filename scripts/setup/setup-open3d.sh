@@ -41,42 +41,38 @@ apt-get update && \
 
 # Install Open3D (from ppa)
 
-apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:roehling/open3d && \
-    apt-get update && \
-    apt-get install -y libopen3d-dev && \
-    rm -f /etc/apt/sources.list.d/roehling-ubuntu-open3d-*.list && \
-    apt-get update && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# apt-get update && \
+#     apt-get install -y software-properties-common && \
+#     add-apt-repository -y ppa:roehling/open3d && \
+#     apt-get update && \
+#     apt-get install -y libopen3d-dev && \
+#     rm -f /etc/apt/sources.list.d/roehling-ubuntu-open3d-*.list && \
+#     apt-get update && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Open3D (from source)
+readonly OPEN3D_VERSION="0.19.0"
+readonly OPEN3D_INSTALL_DIR="/usr/local"
 
-# readonly OPEN3D_VERSION="0.19.0"
-# readonly OPEN3D_INSTALL_DIR="/usr/local"
+echo "Installing Open3D version ${OPEN3D_VERSION}..."
+wget -qO- https://github.com/isl-org/Open3D/archive/refs/tags/v${OPEN3D_VERSION}.tar.gz | tar xzv -C /tmp
 
-# echo "Installing Open3D version ${OPEN3D_VERSION}..."
-# wget -qO- https://github.com/isl-org/Open3D/archive/refs/tags/v${OPEN3D_VERSION}.tar.gz | tar xzv -C /tmp
+cd /tmp/Open3D-${OPEN3D_VERSION}
+chmod +x util/install_deps_ubuntu.sh
+DEBIAN_FRONTEND=noninteractive SUDO=command ./util/install_deps_ubuntu.sh assume-yes
 
-# cd /tmp/Open3D-${OPEN3D_VERSION}
-# chmod +x util/install_deps_ubuntu.sh
-# DEBIAN_FRONTEND=noninteractive SUDO=command ./util/install_deps_ubuntu.sh assume-yes
-
-# mkdir build && cd build
-# cmake -DCMAKE_INSTALL_PREFIX=${OPEN3D_INSTALL_DIR} \
-#     -DBUILD_SHARED_LIBS=ON \
-#     -DBUILD_EXAMPLES=OFF \
-#     -DBUILD_PYTHON_MODULE=OFF \
-#     -DBUILD_GUI=OFF \
-#     -DCMAKE_BUILD_TYPE=Release \
-#     -DGLIBCXX_USE_CXX11_ABI=OFF \
-#     -DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
-#     -DCMAKE_C_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
-#     -DDEVELOPER_BUILD=OFF ..
-# make -j$(nproc)
-# make install
-# cd /tmp
-# rm -rf Open3D-${OPEN3D_VERSION}
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=${OPEN3D_INSTALL_DIR} \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_PYTHON_MODULE=OFF \
+    -DBUILD_GUI=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DDEVELOPER_BUILD=OFF ..
+make -j$(nproc)
+make install
+cd /tmp
+rm -rf Open3D-${OPEN3D_VERSION}
 
 # Set environment variables for CMake to resolve Unwind and other dependencies
 echo 'export CMAKE_INCLUDE_PATH=/usr/include:$CMAKE_INCLUDE_PATH' >> "${HOME}/.bashrc"
