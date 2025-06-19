@@ -159,14 +159,17 @@ ${ROOT}/scripts/setup/setup-fzf.sh 0.52.1
 
 # Install ROS2 and Graph MSF only if --nuc flag is set
 if [ "$IS_NUC" = true ]; then
+    # Install CMake
+    ${ROOT}/scripts/setup/setup-cmake.sh
+
+    # Install Open3d SLAM
+    ${ROOT}/scripts/setup/setup-open3d-slam.sh
+
     echo "Setting up ROS2..."
     ${ROOT}/scripts/setup/setup-ros.sh
 
     echo "Setting up Graph MSF..."
     ${ROOT}/scripts/setup/setup-graph-msf.sh
-
-    echo "Setting up Open3d SLAM..."
-    ${ROOT}/scripts/setup/setup-open3d.sh
 fi
 
 # Create symlink for network configuration

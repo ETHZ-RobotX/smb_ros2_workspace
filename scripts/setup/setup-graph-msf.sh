@@ -40,10 +40,15 @@ echo "Installing graph-msf dependencies for ROS2 $TARGET_ROS_DISTRO..."
 # Update package lists
 apt-get update
 
+# only install cmake if not already installed
+if ! command -v cmake &> /dev/null; then
+    echo "Installing CMake..."
+    apt-get install -y cmake
+fi
+
 # Install basic build tools and dependencies
 apt-get install -y \
     build-essential \
-    cmake \
     curl \
     git \
     python3-colcon-common-extensions \
