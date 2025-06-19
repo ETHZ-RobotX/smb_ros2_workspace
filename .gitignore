@@ -105,6 +105,8 @@ src/planning/tare_planner
 src/planning/navigation_ext_ros2
 src/utils/smb_power_status
 src/utils/twist_pid_controller
+src/utils/topic_tools
+src/visualization/joy_panel_cpp
 src/visualization/smb_rviz_plugins
 
 # Data files
