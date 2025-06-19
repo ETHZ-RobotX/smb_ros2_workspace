@@ -140,14 +140,14 @@ sources:
       - source: .
         target: src/estimation/open3d_slam_private
   - name: joy_panel_cpp
-    repo: git@github.com:ETHZ-RobotX/joy_panel_cpp.git
+    repo: https://github.com/ETHZ-RobotX/joy_panel_cpp.git
     type: git
     rev: main
     links:
       - source: .
         target: src/visualization/joy_panel_cpp
   - name: topic_tools
-    repo: git@github.com:ros-tooling/topic_tools.git
+    repo: https://github.com/ros-tooling/topic_tools.git
     type: git
     rev: jazzy
     links:
