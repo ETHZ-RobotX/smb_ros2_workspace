@@ -22,6 +22,17 @@ fi
 
 echo "Installing open3d dependencies for ROS2 $TARGET_ROS_DISTRO..."
 
+# check cmake version, it should be 3.29.2
+cmake --version
+if [ $? -ne 0 ]; then
+  echo "ERROR: CMake is not installed"
+  exit 1
+fi
+if [ $(cmake --version | grep -c "3.29.2") -ne 1 ]; then
+  echo "ERROR: CMake version is not 3.29.2"
+  exit 1
+fi
+
 python3 -m pip install --break-system-packages --no-cache-dir "mcap[ros2]"
 
 git clone https://github.com/foxglove/mcap.git /tmp/mcap && \

@@ -87,14 +87,18 @@ RUN find /scripts -type f -name "*.sh" -exec chmod +x {} \;
 # Install fzf
 RUN /scripts/setup/setup-fzf.sh 0.52.1
 
+# Install CMake
+RUN /scripts/setup/setup-cmake.sh
+
+# Install Open3D
+RUN /scripts/setup/setup-open3d-slam.sh
+
 # Install ROS2
 RUN /scripts/setup/setup-ros.sh
 
 # Install Graph MSF
 RUN /scripts/setup/setup-graph-msf.sh
 
-# Install Open3D
-RUN /scripts/setup/setup-open3d.sh
 
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \

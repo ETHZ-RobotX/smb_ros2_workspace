@@ -59,7 +59,9 @@ jobs:
           context: git
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=false
-          tags: type=ref,event=branch
+          tags: |
+            type=ref,event=branch
+            type=raw,value=${{ github.ref_name }}-amd64
 
       - name: Build and push Docker image
         id: docker-build
