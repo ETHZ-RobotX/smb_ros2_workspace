@@ -58,7 +58,7 @@ jobs:
         with:
           driver: cloud
           endpoint: "dishtaweera/smb-ros2-workspace"
-          buildkitd-flags: --allow-insecure-entitlement network.host
+          install: true
 
       - name: Extract Docker metadata
         id: meta
