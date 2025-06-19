@@ -147,7 +147,7 @@ sources:
       - source: .
         target: src/visualization/joy_panel_cpp
   - name: topic_tools
-    repo: git@github.com:ros-tooling/topic_tools.git
+    repo: https://github.com/ros-tooling/topic_tools.git
     type: git
     rev: jazzy
     links:
