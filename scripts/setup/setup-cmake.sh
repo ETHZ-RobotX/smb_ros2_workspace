@@ -10,11 +10,6 @@ fi
 
 CMAKE_VERSION=3.29.2
 
-if [ "${CMAKE_VERSION}" = "none" ]; then
-    echo "No CMake version specified, skipping CMake reinstallation"
-    exit 0
-fi
-
 # Cleanup temporary directory and associated files when exiting the script.
 cleanup() {
     EXIT_CODE=$?
