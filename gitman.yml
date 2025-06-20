@@ -90,7 +90,7 @@ sources:
         target: src/planning/far_planner
   - name: tare_planner
     repo: https://github.com/ETHZ-RobotX/tare_planner.git
-    rev: sim_release
+    rev: sim_release_amd_arm
     type: git
     links:
       - source: .
