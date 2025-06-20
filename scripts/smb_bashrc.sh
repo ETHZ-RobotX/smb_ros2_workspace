@@ -99,7 +99,7 @@ get_half_cores() {
 
 # Alias for recording ROS2 bags
 alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
-alias smb_teleop_twist_keyboard="$WORKSPACE_ROOT/scripts/ros/teleop_twist_keyboard.sh"
+alias smb_teleop_twist_keyboard="$WORKSPACE_ROOT/scripts/teleop_twist_keyboard.sh"
 
 
 COLCON_ARGS="--log-base $WORKSPACE_ROOT/log build --symlink-install --merge-install --parallel-workers $(get_half_cores) --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --build-base $WORKSPACE_ROOT/build --install-base $WORKSPACE_ROOT/install"
