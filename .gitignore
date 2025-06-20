@@ -106,6 +106,7 @@ src/planning/navigation_ext_ros2
 src/utils/smb_power_status
 src/utils/twist_pid_controller
 src/visualization/smb_rviz_plugins
+src/visualization/joy_panel_cpp
 
 # Data files
 /data/rosbags/*
