@@ -31,7 +31,7 @@ sources:
       - source: .
         target: src/core/smb_kinematics
   - name: direct_lidar_inertial_odometry
-    repo: https://github.com/PerFrivik/direct_lidar_inertial_odometry.git
+    repo: https://github.com/ETH-RobotX/direct_lidar_inertial_odometry.git
     rev: main
     type: git
     links:
