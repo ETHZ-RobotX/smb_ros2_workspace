@@ -55,7 +55,7 @@ fi
 
 # DDS Configuration
 export SMB_DDS_CONFIG_DIR="$WORKSPACE_ROOT/scripts/config"
-export SMB_CURRENT_DDS="cyclonedds"  # DDS Implementation: cyclonedds or fastdds
+export SMB_CURRENT_DDS="fastdds"  # DDS Implementation: cyclonedds or fastdds
 
 # Function to switch between DDS implementations
 smb_switch_dds() {
@@ -99,6 +99,8 @@ get_half_cores() {
 
 # Alias for recording ROS2 bags
 alias smb_ros_record="$WORKSPACE_ROOT/scripts/ros/smb_record.sh"
+alias smb_teleop_twist_keyboard="$WORKSPACE_ROOT/scripts/ros/teleop_twist_keyboard.sh"
+
 
 COLCON_ARGS="--log-base $WORKSPACE_ROOT/log build --symlink-install --merge-install --parallel-workers $(get_half_cores) --cmake-args -DCMAKE_BUILD_TYPE=Release --base-paths $WORKSPACE_ROOT/src --build-base $WORKSPACE_ROOT/build --install-base $WORKSPACE_ROOT/install"
 
