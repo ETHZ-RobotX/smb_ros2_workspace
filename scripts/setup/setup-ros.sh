@@ -53,6 +53,7 @@ apt-get install -y --no-install-recommends \
   ros-$TARGET_ROS_DISTRO-desktop \
   ros-$TARGET_ROS_DISTRO-rosbag2-storage-mcap \
   ros-$TARGET_ROS_DISTRO-ros-gz-sim \
+  ros-$TARGET_ROS_DISTRO-ros-gz \
   ros-$TARGET_ROS_DISTRO-xacro \
   ros-$TARGET_ROS_DISTRO-robot-state-publisher \
   ros-$TARGET_ROS_DISTRO-joint-state-publisher \
