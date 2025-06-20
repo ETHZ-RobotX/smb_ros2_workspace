@@ -104,7 +104,7 @@ sources:
         target: src/planning/navigation_ext_ros2
   - name: rslidar_sdk
     repo: https://github.com/ETHZ-RobotX/rslidar_sdk.git
-    rev: smb_ros2
+    rev: main
     type: git
     links:
       - source: .
