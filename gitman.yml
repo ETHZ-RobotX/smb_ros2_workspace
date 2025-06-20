@@ -74,7 +74,7 @@ sources:
         target: src/utils/smb_power_status
   - name: smb_low_level_controller_ros2
     repo: https://github.com/ETHZ-RobotX/smb_lowlevel_controller_ros2.git
-    rev: robotx
+    rev: main
     type: git
     links:
       - source: .
