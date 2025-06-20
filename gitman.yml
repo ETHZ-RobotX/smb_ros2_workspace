@@ -39,7 +39,7 @@ sources:
         target: src/estimation/direct_lidar_inertial_odometry
   - name: smb_rviz_plugins_ros2
     repo: https://github.com/ETHZ-RobotX/smb_rviz_plugins_ros2.git
-    rev: fix/robotx-workspace
+    rev: main
     type: git
     links:
       - source: .
