@@ -1,6 +1,6 @@
-name: build-push
+name: build-push-cloud
 
-run-name: build@${{ github.ref_name }}
+run-name: build-cloud@${{ github.ref_name }}
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ on:
       - 'main'
       - 'workspace/**'
     paths:
-      - '.github/docker/**'
+      - '.github/**'
       - 'scripts/setup/**'
 
 defaults:
@@ -24,7 +24,7 @@ defaults:
     shell: bash
 
 jobs:
-  build:
+  build-cloud:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
@@ -38,12 +38,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Log into Docker Hub (for Build Cloud)
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PAT }}
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
@@ -52,6 +53,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Docker Buildx with Docker Build Cloud
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: cloud
+          endpoint: "dishtaweera/smb-ros2-workspace"
+          install: true
+
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -59,17 +67,15 @@ jobs:
           context: git
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: latest=false
-          tags: |
-            type=ref,event=branch
-            type=raw,value=${{ github.ref_name }}-amd64
+          tags: type=ref,event=branch
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image (multi-arch, via Build Cloud)
         id: docker-build
         uses: docker/build-push-action@v6
         with:
           context: ${{ env.BUILD_CONTEXT }}
           file: ${{ env.DOCKERFILE_PATH }}
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
