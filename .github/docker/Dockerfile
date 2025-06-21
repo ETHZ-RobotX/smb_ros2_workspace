@@ -88,13 +88,8 @@ RUN find /scripts -type f -name "*.sh" -exec chmod +x {} \;
 # Install fzf
 RUN /scripts/setup/setup-fzf.sh 0.52.1
 
-# Install CMake only for ARM64 builds (needed for Open3D source build)
-RUN if [ "$TARGETARCH" = "aarch64" ]; then \
-        echo "Upgrading CMake for ARM64 build..."; \
-        /scripts/setup/setup-cmake.sh; \
-    else \
-        echo "Using default CMake for $TARGETARCH build..."; \
-    fi
+# Install CMake
+RUN /scripts/setup/setup-cmake.sh
 
 # Install Open3D
 RUN /scripts/setup/setup-open3d-slam.sh
