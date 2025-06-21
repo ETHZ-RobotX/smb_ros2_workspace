@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Verify root privileges before proceeding
 if [[ "$EUID" -ne 0 ]] ; then
-  echo "ERROR: graph-msf install must be run as root, please run:"
+  echo "ERROR: kasmvnc install must be run as root, please run:"
   echo "  sudo $0"
   exit 1
 fi

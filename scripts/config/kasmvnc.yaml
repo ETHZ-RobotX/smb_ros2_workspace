@@ -15,9 +15,9 @@ network:
   use_ipv4: true
   use_ipv6: true
   udp:
-    public_ip: auto
+    public_ip: 0.0.0.0
     port: 8455
-    stun_server: auto
+    stun_server: none
   ssl:
     pem_certificate: 
     pem_key: 
