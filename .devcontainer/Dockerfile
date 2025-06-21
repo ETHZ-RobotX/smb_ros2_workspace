@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 
-ARG BASE_IMAGE
+ARG BASE_IMAGE=ghcr.io/ethz-robotx/smb_ros2_workspace:main
 FROM ${BASE_IMAGE}
 
 ENV IS_DOCKER=true
 
 # Create user account with proper setup
-ARG USERNAME
+ARG USERNAME=robotx
 ARG USER_UID=1000
 ARG USER_GID=1000
 
