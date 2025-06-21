@@ -17,7 +17,8 @@
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
 		"--shm-size=1g",
 		"--network=host",
-		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
+		"-v",
+		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
 		"--device=/dev/dri"
 	],
 	"privileged": true,
@@ -27,25 +28,16 @@
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
-	"features": {
-	},
+	"features": {},
 	"forwardPorts": [
 		8455
 	],
-	// "forwardPorts": [
-	// 	6080,
-	// 	5901
-	// ],
-	// "portsAttributes": {
-	// 	"6080": {
-	// 		"label": "VNC web client (noVNC)",
-	// 		"onAutoForward": "silent"
-	// 	},
-	// 	"5901": {
-	// 		"label": "VNC TCP port",
-	// 		"onAutoForward": "silent"
-	// 	}
-	// },
+	"portsAttributes": {
+		"8455": {
+			"label": "KASMVNC web client",
+			"onAutoForward": "silent"
+		}
+	},
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},
