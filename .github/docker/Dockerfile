@@ -89,7 +89,7 @@ RUN find /scripts -type f -name "*.sh" -exec chmod +x {} \;
 RUN /scripts/setup/setup-fzf.sh 0.52.1
 
 # Install CMake only for ARM64 builds (needed for Open3D source build)
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
+RUN if [ "$TARGETARCH" = "arm64" ] || [ "$TARGETARCH" = "aarch64" ]; then \
         echo "Upgrading CMake for ARM64 build..."; \
         /scripts/setup/setup-cmake.sh; \
     else \
