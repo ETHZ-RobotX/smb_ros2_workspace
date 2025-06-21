@@ -17,8 +17,7 @@
 		"--shm-size=1g",
 		"--network=host",
 		"-v",
-		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
-		"--device=/dev/dri"
+		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache"
 	],
 	"privileged": true,
 	"containerEnv": {
@@ -30,10 +29,10 @@
 		"MPLBACKEND": "Qt5Agg"
 	},
 	"forwardPorts": [
-		8456
+		8455
 	],
 	"portsAttributes": {
-		"8456": {
+		"8455": {
 			"label": "KASMVNC web client",
 			"onAutoForward": "silent"
 		}
