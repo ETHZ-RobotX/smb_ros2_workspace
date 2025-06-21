@@ -103,7 +103,7 @@ src/estimation/open3d_slam_private
 src/planning/far_planner
 src/planning/tare_planner
 src/planning/navigation_ext_ros2
-src/perception/object_detection
+src/perception/smb_object_detection
 src/utils/smb_power_status
 src/utils/twist_pid_controller
 src/visualization/joy_panel_cpp

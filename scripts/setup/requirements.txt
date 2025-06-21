@@ -1,3 +1,11 @@
+# Requirements General ----------------------------------------
+
+gitman
+pre-commit
+
+# Requirements for SSH
+paramiko>=3.3.1
+
 # Requirements for Object Detection - smb_object_detection
 
 # Base ----------------------------------------
