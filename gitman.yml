@@ -140,10 +140,10 @@ sources:
       - source: .
         target: src/estimation/open3d_slam_private
 
-  - name: smb_remote_ssh
-    repo: https://github.com/ETHZ-RobotX/smb_ssh_launch.git
+  - name: smb_launch_ssh
+    repo: https://github.com/ETHZ-RobotX/smb_launch_ssh.git
     rev: main
     type: git
     links:
       - source: .
-        target: src/core/smb_remote_ssh
+        target: src/core/smb_launch_ssh
