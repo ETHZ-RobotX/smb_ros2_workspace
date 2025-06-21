@@ -15,8 +15,8 @@ else
 fi
 
 # Setup fancy prompt
-chmod +x ${ROOT}/scripts/setup/setup-fancy-prompt.sh
-${ROOT}/scripts/setup/setup-fancy-prompt.sh ${USER}
+chmod +x "${ROOT}/scripts/setup/setup-fancy-prompt.sh"
+"${ROOT}/scripts/setup/setup-fancy-prompt.sh" "${USER}"
 
 echo "export CMAKE_INCLUDE_PATH=/usr/include:\$CMAKE_INCLUDE_PATH" >> "${HOME}/.bashrc"
 echo "export CMAKE_LIBRARY_PATH=${LIB_PATH}:\$CMAKE_LIBRARY_PATH" >> "${HOME}/.bashrc"
