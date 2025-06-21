@@ -14,8 +14,8 @@ ARG USER_UID=1000
 ARG USER_GID=1000
 
 # Create the user group if it doesn't exist
-RUN if ! getent group ${USER_GID} >/dev/null; then \
-        groupadd -g ${USER_GID} ${USERNAME}; \
+RUN if ! getent group "${USER_GID}" >/dev/null; then \
+        groupadd -g "${USER_GID}" "${USERNAME}"; \
     fi
 
 # Create the user account (useradd -m automatically creates home directory and shell files)
