@@ -62,13 +62,14 @@ smb_switch_dds() {
     # Detect if we're in a Docker environment
     local is_docker=${IS_DOCKER:-false}
     local config_suffix=""
+    local env_type=""
     
     if [ "$is_docker" = "true" ]; then
         config_suffix=""
-        echo "Docker environment detected, using standard DDS configuration"
+        env_type="Docker"
     else
         config_suffix="-robot"
-        echo "Robot environment detected, using robot-specific DDS configuration"
+        env_type="Robot"
     fi
     
     if [ "$1" = "cyclonedds" ]; then
@@ -76,13 +77,13 @@ smb_switch_dds() {
         export CYCLONEDDS_URI="file://$SMB_DDS_CONFIG_DIR/cyclonedds${config_suffix}-config.xml"
         export FASTRTPS_DEFAULT_PROFILES_FILE=""
         export SMB_CURRENT_DDS="cyclonedds"
-        echo "CycloneDDS configured as DDS layer."
+        echo "${env_type} environment: CycloneDDS configured as DDS layer"
     elif [ "$1" = "fastdds" ]; then
         export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
         export CYCLONEDDS_URI=""
         export FASTRTPS_DEFAULT_PROFILES_FILE="$SMB_DDS_CONFIG_DIR/fastdds${config_suffix}-config.xml"
         export SMB_CURRENT_DDS="fastdds"
-        echo "FastDDS configured as DDS layer."
+        echo "${env_type} environment: FastDDS configured as DDS layer"
     else
         echo "Error: Invalid DDS implementation. Use 'cyclonedds' or 'fastdds'"
         return 1
