@@ -17,7 +17,8 @@
 		"--shm-size=1g",
 		"--network=host",
 		"-v",
-		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache"
+		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
+		"--device=/dev/dri"
 	],
 	"privileged": true,
 	"containerEnv": {
