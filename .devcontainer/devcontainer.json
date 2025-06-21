@@ -14,7 +14,7 @@
 	"runArgs": [
 		// Uncomment it if you have problems with the auto X11 forwarding
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
-		"--shm-size=1g",
+		"--shm-size=2g", // 2GB of shared memory, increase if you have a large workspace or decrease if you have a small workspace
 		"--network=host",
 		"-v",
 		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
