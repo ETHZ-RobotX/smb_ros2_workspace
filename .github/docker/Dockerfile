@@ -93,7 +93,7 @@ RUN if [ "$TARGETARCH" = "arm64" ] || [ "$TARGETARCH" = "aarch64" ]; then \
         echo "Upgrading CMake for ARM64 build..."; \
         /scripts/setup/setup-cmake.sh; \
     else \
-        echo "Using default CMake for AMD64 build..."; \
+        echo "Using default CMake for $TARGETARCH build..."; \
     fi
 
 # Install Open3D
