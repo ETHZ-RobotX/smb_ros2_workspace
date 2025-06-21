@@ -17,34 +17,35 @@
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
 		"--shm-size=1g",
 		"--network=host",
-		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache"
+		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
+		"--device=/dev/dri"
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
-		// "DISPLAY": ":10", // for VNC on Mac or Windows
+		// "DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
+		"DISPLAY": ":10", // for VNC on Mac or Windows
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/desktop-lite:1": {
-			"password": "robotx"
-		}
 	},
 	"forwardPorts": [
-		6080,
-		5901
+		8455
 	],
-	"portsAttributes": {
-		"6080": {
-			"label": "VNC web client (noVNC)",
-			"onAutoForward": "silent"
-		},
-		"5901": {
-			"label": "VNC TCP port",
-			"onAutoForward": "silent"
-		}
-	},
+	// "forwardPorts": [
+	// 	6080,
+	// 	5901
+	// ],
+	// "portsAttributes": {
+	// 	"6080": {
+	// 		"label": "VNC web client (noVNC)",
+	// 		"onAutoForward": "silent"
+	// 	},
+	// 	"5901": {
+	// 		"label": "VNC TCP port",
+	// 		"onAutoForward": "silent"
+	// 	}
+	// },
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},
