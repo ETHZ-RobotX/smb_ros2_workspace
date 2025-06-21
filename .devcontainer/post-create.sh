@@ -36,6 +36,10 @@ echo "source ${ROOT}/scripts/smb_bashrc.sh" >> ~/.bashrc
 # git config
 git config core.autocrlf false # Prevent line ending conversion on Windows
 
+################################################################################
+# VNC
+################################################################################
+
 # kasmvnc setting up
 if [ "${VNC_ENABLED}" == "true" ]; then
 mkdir -p "/home/${USER}/.vnc"
@@ -68,7 +72,14 @@ send "3\r"
 
 expect eof
 EOF
+
 fi
+
+# Setup VNC server service
+
+################################################################################
+# Tmux
+################################################################################
 
 # Setup tmux - create config directory and link config
 mkdir -p ~/.config/tmux

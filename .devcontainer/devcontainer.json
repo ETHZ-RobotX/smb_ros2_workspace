@@ -29,15 +29,6 @@
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
-	// "forwardPorts": [
-	// 	8455
-	// ],
-	// "portsAttributes": {
-	// 	"8455": {
-	// 		"label": "KASMVNC web client",
-	// 		"onAutoForward": "silent"
-	// 	}
-	// },
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},
