@@ -86,8 +86,6 @@ docs/_build/
 .bash_history
 
 # Ignore gitman dependencies
-
-src/detection
 src/core/smb_bringup
 src/core/smb_description
 src/core/smb_gazebo
@@ -105,6 +103,7 @@ src/estimation/open3d_slam_private
 src/planning/far_planner
 src/planning/tare_planner
 src/planning/navigation_ext_ros2
+src/perception/object_detection
 src/utils/smb_power_status
 src/utils/twist_pid_controller
 src/visualization/joy_panel_cpp
