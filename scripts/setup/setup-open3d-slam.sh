@@ -104,4 +104,4 @@ elif [[ "$INSTALL_METHOD" == "source" ]]; then
   rm -rf Open3D-${OPEN3D_VERSION}
 fi
 
-echo "Open3d dependencies installed successfully for ROS2 $TARGET_ROS_DISTRO on $ARCH"
+echo "Open3D dependencies installed successfully for ROS2 $TARGET_ROS_DISTRO on $ARCH"
