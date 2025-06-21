@@ -11,22 +11,22 @@ Pillow>=10.0.0
 PyYAML>=6.0.1
 requests>=2.31.0
 scipy>=1.11.0
-torch>=2.1.0
-torchvision>=0.16.0
+# torch>=2.1.0
+# torchvision>=0.16.0
 tqdm>=4.65.0
 
 onnxruntime>=1.8.0
 
-# detection
-yolov5
+# # detection
+# # yolov5
 
-# Logging -------------------------------------
+# # Logging -------------------------------------
 tensorboard>=2.15.0
 
-# Plotting ------------------------------------
+# # Plotting ------------------------------------
 pandas>=2.1.0
 seaborn>=0.13.0
 
 hdbscan>=0.8.33
 
-thop  # FLOPs computation
+# thop  # FLOPs computation
