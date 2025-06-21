@@ -17,9 +17,6 @@
   <depend>object_detection_msgs</depend>
   <depend>object_detection</depend>
 
-
-
-
   <export>
     <build_type>ament_cmake</build_type>
   </export>
