@@ -14,8 +14,8 @@
   <depend>smb_bringup</depend>
   <depend>flir_camera_description</depend>
   <depend>flir_camera_msgs</depend>
-  <depend>object_detection_msgs</depend>
   <depend>object_detection</depend>
+  <depend>object_detection_msgs</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
