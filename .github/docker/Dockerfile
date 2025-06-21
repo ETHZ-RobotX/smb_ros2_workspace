@@ -36,6 +36,7 @@ RUN apt-get update && \
       htop \
       glances \
       net-tools \
+      terminator \
       python3 \
       python3-dev \
       python3-pip \
