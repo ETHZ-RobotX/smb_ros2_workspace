@@ -31,7 +31,6 @@
 			"password": "robotx"
 		}
 	},
-	"containerUser": "${localEnv:USER}",
 	"forwardPorts": [
 		6080,
 		5901
