@@ -69,7 +69,7 @@ COPY scripts/setup/requirements.txt /tmp/requirements.txt
 RUN pip install --break-system-packages -r /tmp/requirements.txt
 
 # Clean up
-RUN rm /tmp/requirements.txt
+RUN rm -f /tmp/requirements.txt
 
 # Install code formatting and linting tools
 RUN apt-get update && \
