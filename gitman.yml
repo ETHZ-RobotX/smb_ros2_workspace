@@ -4,7 +4,7 @@ groups: []
 sources:
   - name: smb_description_ros2
     repo: https://github.com/ETHZ-RobotX/smb_description_ros2.git
-    rev: object_detection_working
+    rev: main
     type: git
     links:
       - source: .
