@@ -116,3 +116,7 @@ src/visualization/joy_panel_cpp
 
 # Ignore gitman log
 dependencies/gitman.log
+
+# Ignore venv
+.venv/
+venv/
