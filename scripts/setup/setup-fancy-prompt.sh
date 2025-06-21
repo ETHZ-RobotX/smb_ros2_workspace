@@ -14,9 +14,6 @@ setup_bash_prompt() {
 # Fancy prompt configuration (similar to devcontainer features)
 # Colors for prompt
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    # We have color support; assume it's compliant with Ecma-48
-    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-    # a case would tend to support setf rather than setaf.)
     color_prompt=yes
 else
     color_prompt=
@@ -28,9 +25,8 @@ if [ "$color_prompt" = yes ]; then
     # Add git branch info
     if [ -f /usr/lib/git-core/git-sh-prompt ]; then
         . /usr/lib/git-core/git-sh-prompt
-        GIT_PS1_SHOWDIRTYSTATE=1
-        GIT_PS1_SHOWSTASHSTATE=1
-        GIT_PS1_SHOWUNTRACKEDFILES=1
+        # Only show the branch name—disable all extra symbols:
+        unset GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES
         PS1='\[\033[01;32m\]\u\[\033[00m\] \[\033[01;33m\]➜\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1 " (%s)")\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
     else
         PS1='\[\033[01;32m\]\u\[\033[00m\] \[\033[01;33m\]➜\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
@@ -39,16 +35,11 @@ else
     PS1='\u ➜ \w \$ '
 fi
 
-# Uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+# Uncomment for a colored prompt (if you really want it):
+# force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
         color_prompt=yes
     else
         color_prompt=
@@ -73,32 +64,17 @@ setopt PROMPT_SUBST
 
 # Git prompt function
 git_prompt() {
-    # Check if we're in a git repo
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        # Branch name
         local BRANCH
         BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-        
         if [ -n "$BRANCH" ]; then
-            local GIT_STATUS
-            GIT_STATUS+="%{$fg_bold[cyan]%}(%{$fg_bold[red]%}${BRANCH}"
-            
-            # Dirty check
-            if [ "$(git config --get devcontainers-theme.show-dirty 2>/dev/null)" = "1" ] && \
-               ! git diff --quiet --ignore-submodules; then
-                GIT_STATUS+=" %{$fg_bold[yellow]%}✗"
-            fi
-            
-            GIT_STATUS+="%{$fg_bold[cyan]%})%{$reset_color%} "
-            echo -n "$GIT_STATUS"
+            printf '(%s) ' "$BRANCH"
         fi
     fi
 }
 
 # Main prompt
-PROMPT='%{$fg_bold[green]%}%n %{$fg_bold[yellow]%}➜ %{$fg_bold[blue]%}%(5~|%-1~/…/%3~|%4~)%{$reset_color%} $(git_prompt)%{$fg[white]%}$%{$reset_color%} '
-
-# Right prompt (optional)
+PROMPT='%{$fg_bold[green]%}%n %{$fg_bold[yellow]%}➜ %{$fg_bold[blue]%}%~%{$reset_color%} $(git_prompt)%{$fg[white]%}$%{$reset_color%} '
 RPROMPT=''
 EOF
 }
@@ -132,11 +108,11 @@ main() {
         echo "✓ Zsh prompt configured"
     fi
     
-    # Set ownership
-    chown -R "$username:$username" "$user_home/.bashrc" "$user_home/.zshrc" 2>/dev/null || true
+    # Fix ownership
+    chown -R "$username:$username" \
+      "$user_home/.bashrc" "$user_home/.zshrc" 2>/dev/null || true
     
     echo "Fancy prompt setup complete for $username"
 }
 
-# Run main function with provided arguments
-main "$@" 
+main "$@"
