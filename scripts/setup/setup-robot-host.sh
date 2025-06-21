@@ -52,11 +52,23 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# Determine system architecture
+readonly ARCH=$(uname -m)
+if [[ "$ARCH" == "x86_64" ]]; then
+    readonly INSTALL_METHOD="ppa"
+elif [[ "$ARCH" == "aarch64" ]] || [[ "$ARCH" == "arm64" ]]; then
+    readonly INSTALL_METHOD="source"
+else
+    echo "ERROR: Unsupported architecture: $ARCH"
+    echo "This script supports x86_64 (AMD64) and aarch64/arm64 (ARM64)"
+    exit 1
+fi
+
 # Set the target user
 USER="robotx"
 USER_HOME="/home/${USER}"
 
-echo "Setting up robot host system..."
+echo "Setting up robot host system on $ARCH architecture..."
 
 # Get the workspace root directory
 ROOT=$(dirname $(dirname $(dirname $(readlink -f $0))))
@@ -159,8 +171,13 @@ ${ROOT}/scripts/setup/setup-fzf.sh 0.52.1
 
 # Install ROS2 and Graph MSF only if --nuc flag is set
 if [ "$IS_NUC" = true ]; then
-    # Install CMake
-    ${ROOT}/scripts/setup/setup-cmake.sh
+    # Install CMake only for ARM64 builds (needed for Open3D source build)
+    if [[ "$INSTALL_METHOD" == "source" ]]; then
+        echo "Upgrading CMake for ARM64 build..."
+        ${ROOT}/scripts/setup/setup-cmake.sh
+    else
+        echo "Using default CMake for AMD64 build..."
+    fi
 
     # Install Open3d SLAM
     ${ROOT}/scripts/setup/setup-open3d-slam.sh
