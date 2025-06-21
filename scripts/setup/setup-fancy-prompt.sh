@@ -27,7 +27,7 @@ if [ "$color_prompt" = yes ]; then
         . /usr/lib/git-core/git-sh-prompt
         # Only show the branch name—disable all extra symbols:
         unset GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES
-        PS1='\[\033[01;32m\]\u\[\033[00m\] \[\033[01;33m\]➜\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1 " (%s)")\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
+        PS1='\[\033[01;32m\]\u\[\033[00m\] \[\033[01;33m\]➜\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \[\033[01;34m\](\[\033[01;31m\]$(__git_ps1 "%s")\[\033[01;34m\])\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
     else
         PS1='\[\033[01;32m\]\u\[\033[00m\] \[\033[01;33m\]➜\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
     fi
@@ -68,7 +68,7 @@ git_prompt() {
         local BRANCH
         BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
         if [ -n "$BRANCH" ]; then
-            printf '(%s) ' "$BRANCH"
+            printf '%s(%s%s%s) ' "%{$fg_bold[blue]%}" "%{$fg_bold[red]%}" "$BRANCH" "%{$fg_bold[blue]%}"
         fi
     fi
 }
