@@ -6,7 +6,6 @@
 		"args": {
 			"BUILDKIT_INLINE_CACHE": "0",
 			"BASE_IMAGE": "ghcr.io/ethz-robotx/smb_ros2_workspace:main",
-			"VNC_RESOLUTION": "1920x1080x32",
 			"USERNAME": "${localEnv:USER}",
 			"USER_UID": "1000",
 			"USER_GID": "1000"
@@ -23,17 +22,18 @@
 	],
 	"privileged": true,
 	"containerEnv": {
-		// "DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
-		"DISPLAY": ":10", // for VNC on Mac or Windows
+		"DISPLAY": "${localEnv:DISPLAY}:10", // for VNC
+		"VNC_ENABLED": "false", // VNC is disabled by default, set to true to enable VNC
+		"VNC_USERNAME": "robotx",
+		"VNC_PASSWORD": "robotx",
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
-	"features": {},
 	"forwardPorts": [
-		8455
+		8456
 	],
 	"portsAttributes": {
-		"8455": {
+		"8456": {
 			"label": "KASMVNC web client",
 			"onAutoForward": "silent"
 		}

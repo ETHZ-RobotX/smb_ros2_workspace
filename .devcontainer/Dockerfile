@@ -3,9 +3,6 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-ARG VNC_RESOLUTION
-ENV VNC_RESOLUTION=$VNC_RESOLUTION
-
 ENV IS_DOCKER=true
 
 # Create user account with proper setup

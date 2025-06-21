@@ -100,6 +100,9 @@ RUN /scripts/setup/setup-ros.sh
 # Install Graph MSF
 RUN /scripts/setup/setup-graph-msf.sh
 
+# Install Kasm VNC
+RUN /scripts/setup/setup-kasmvnc.sh
+
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \
     apt-get install -y gettext && \

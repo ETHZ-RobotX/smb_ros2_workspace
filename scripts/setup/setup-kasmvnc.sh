@@ -38,7 +38,7 @@ echo "keyboard-configuration keyboard-configuration/unsupported_config boolean t
 echo "keyboard-configuration keyboard-configuration/unsupported_config_options boolean true" | debconf-set-selections
 
 wget $KASMVNC_DEB_FILE -O /tmp/kasmvnc.deb
-apt-get update && apt-get install -y /tmp/kasmvnc.deb ubuntu-mate-core mate-desktop-environment-core curl wget net-tools x11-xserver-utils xserver-xorg-video-dummy
+apt-get update && apt-get install -y /tmp/kasmvnc.deb ubuntu-mate-core mate-desktop-environment-core curl wget net-tools x11-xserver-utils xserver-xorg-video-dummy expect
 rm -rf /var/lib/apt/lists/*
 
 sudo tee /etc/X11/xorg.conf > /dev/null <<EOF
@@ -64,29 +64,3 @@ Section "Screen"
     EndSubSection
 EndSection
 EOF
-
-# expect <<EOF
-# spawn vncserver -select-de mate :2
-
-# expect "Provide selection number:"
-# send "1\r"
-
-# expect "Enter username (default: robotx):"
-# send "robotx\r"
-
-# expect "Password:"
-# send "robotx\r"
-
-# expect "Verify:"
-# send "robotx\r"
-
-# expect eof
-# EOF
-
-# # Copy xorg.conf if missing or different
-# if ! cmp -s "$CURRENT_PATH/xorg.conf" /etc/X11/xorg.conf; then
-#     sudo cp "$CURRENT_PATH/xorg.conf" /etc/X11/xorg.conf
-#     echo "Copied xorg.conf"
-# else
-#     echo "xorg.conf is already up to date."
-# fi
