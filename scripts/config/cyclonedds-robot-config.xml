@@ -9,7 +9,7 @@
       <MaxMessageSize>65500B</MaxMessageSize>
     </General>
     <Internal>
-      <SocketReceiveBufferSize min="0.2MB"/>
+      <SocketReceiveBufferSize min="10MB"/>
       <Watermarks>
         <WhcHigh>500kB</WhcHigh>
       </Watermarks>
