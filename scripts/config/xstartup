@@ -1,8 +1,16 @@
 #!/bin/sh
+
+# Unset session variables to avoid conflicts
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-export XDG_SESSION_TYPE=x11
-export DESKTOP_SESSION=mate
-export XDG_CURRENT_DESKTOP=MATE
 
+# Set environment for MATE
+export XDG_SESSION_TYPE=x11
+export XDG_CURRENT_DESKTOP=MATE
+export DESKTOP_SESSION=mate
+
+# Start a new DBus session
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
+# Start the MATE session in the background
 mate-session &

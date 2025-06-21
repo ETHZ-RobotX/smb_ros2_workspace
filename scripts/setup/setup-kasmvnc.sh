@@ -38,16 +38,32 @@ echo "keyboard-configuration keyboard-configuration/unsupported_config boolean t
 echo "keyboard-configuration keyboard-configuration/unsupported_config_options boolean true" | debconf-set-selections
 
 wget $KASMVNC_DEB_FILE -O /tmp/kasmvnc.deb
-apt-get update && apt-get install -y /tmp/kasmvnc.deb mate-desktop-environment-core curl wget net-tools x11-xserver-utils xserver-xorg-video-dummy
+apt-get update && apt-get install -y /tmp/kasmvnc.deb ubuntu-mate-core mate-desktop-environment-core curl wget net-tools x11-xserver-utils xserver-xorg-video-dummy
 rm -rf /var/lib/apt/lists/*
 
-# # Install ubuntu-mate-core if not installed
-# if ! dpkg -s ubuntu-mate-core >/dev/null 2>&1; then
-#     sudo apt-get install -y ubuntu-mate-core
-# else
-#     echo "Ubuntu Mate Core already installed."
-# fi
-# sudo apt install ubuntu-mate-core -y
+sudo tee /etc/X11/xorg.conf > /dev/null <<EOF
+Section "Device"
+    Identifier  "Configured Video Device"
+    Driver      "dummy"
+EndSection
+
+Section "Monitor"
+    Identifier  "Configured Monitor"
+    HorizSync   31.5-48.5
+    VertRefresh 50-70
+EndSection
+
+Section "Screen"
+    Identifier  "Default Screen"
+    Monitor     "Configured Monitor"
+    Device      "Configured Video Device"
+    DefaultDepth 24
+    SubSection "Display"
+        Depth   24
+        Modes   "1920x1080"
+    EndSubSection
+EndSection
+EOF
 
 # expect <<EOF
 # spawn vncserver -select-de mate :2

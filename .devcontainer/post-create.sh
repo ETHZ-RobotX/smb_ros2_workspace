@@ -41,7 +41,6 @@ mkdir -p "/home/${USER}/.vnc"
 cp "${ROOT}/scripts/config/kasmvnc.yaml" "/home/${USER}/.vnc/kasmvnc.yaml"
 cp "${ROOT}/scripts/config/xstartup" "/home/${USER}/.vnc/xstartup"
 chmod +x "/home/${USER}/.vnc/xstartup"
-sudo usermod -aG video dishtaweera
 echo "Setup kasmvnc done"
 
 # kasmvnc setting up
