@@ -3,9 +3,6 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-ARG VNC_RESOLUTION
-ENV VNC_RESOLUTION=$VNC_RESOLUTION
-
 ENV IS_DOCKER=true
 
 # Create user account with proper setup
@@ -22,6 +19,9 @@ RUN if ! getent group "${USER_GID}" >/dev/null; then \
 RUN useradd -m -s /bin/bash -u ${USER_UID} -g ${USER_GID} -G sudo ${USERNAME} \
     && echo ${USERNAME} ALL=\(ALL\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
+
+# Suppress the sudo hint message
+RUN touch /home/${USERNAME}/.sudo_as_admin_successful
 
 # Set the default user
 USER ${USERNAME}

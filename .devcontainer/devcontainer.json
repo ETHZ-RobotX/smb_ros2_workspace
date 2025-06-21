@@ -6,7 +6,6 @@
 		"args": {
 			"BUILDKIT_INLINE_CACHE": "0",
 			"BASE_IMAGE": "ghcr.io/ethz-robotx/smb_ros2_workspace:main",
-			"VNC_RESOLUTION": "1920x1080x32",
 			"USERNAME": "${localEnv:USER}",
 			"USER_UID": "1000",
 			"USER_GID": "1000"
@@ -17,34 +16,28 @@
 		// "--volume=/tmp/.X11-unix/X0:/tmp/.X11-unix/X0", 
 		"--shm-size=1g",
 		"--network=host",
-		"-v", "${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache"
+		"-v",
+		"${localEnv:HOME}/.gitcache:/home/${localEnv:USER}/.gitcache",
+		"--device=/dev/dri"
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}", // for VNC on Linux
-		// "DISPLAY": ":10", // for VNC on Mac or Windows
+		"DISPLAY": "${localEnv:DISPLAY}", // Will be overridden by post-create script when VNC is enabled
+		"VNC_ENABLED": "false", // VNC is disabled by default, set to true to enable VNC
+		"VNC_USERNAME": "robotx",
+		"VNC_PASSWORD": "robotx",
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
-	"features": {
-		"ghcr.io/devcontainers/features/desktop-lite:1": {
-			"password": "robotx"
-		}
-	},
-	"forwardPorts": [
-		6080,
-		5901
-	],
-	"portsAttributes": {
-		"6080": {
-			"label": "VNC web client (noVNC)",
-			"onAutoForward": "silent"
-		},
-		"5901": {
-			"label": "VNC TCP port",
-			"onAutoForward": "silent"
-		}
-	},
+	// "forwardPorts": [
+	// 	8455
+	// ],
+	// "portsAttributes": {
+	// 	"8455": {
+	// 		"label": "KASMVNC web client",
+	// 		"onAutoForward": "silent"
+	// 	}
+	// },
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},
