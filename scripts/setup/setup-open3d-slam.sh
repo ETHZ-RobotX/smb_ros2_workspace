@@ -20,19 +20,35 @@ else
   exit 1
 fi
 
-echo "Installing open3d dependencies for ROS2 $TARGET_ROS_DISTRO..."
-
-# check cmake version, it should be 3.29.2
-cmake --version
-if [ $? -ne 0 ]; then
-  echo "ERROR: CMake is not installed"
+# Determine system architecture
+readonly ARCH=$(uname -m)
+if [[ "$ARCH" == "x86_64" ]]; then
+  readonly INSTALL_METHOD="ppa"
+elif [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+  readonly INSTALL_METHOD="source"
+else
+  echo "ERROR: Unsupported architecture: $ARCH"
+  echo "This script supports x86_64 (AMD64) and aarch64 (ARM64)"
   exit 1
 fi
-CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')
-REQUIRED_CMAKE_VERSION="3.29.2"
-if [ "$(printf '%s\n' "$REQUIRED_CMAKE_VERSION" "$CMAKE_VERSION" | sort -V | head -n1)" != "$REQUIRED_CMAKE_VERSION" ]; then
-  echo "ERROR: CMake version must be at least $REQUIRED_CMAKE_VERSION (found $CMAKE_VERSION)"
-  exit 1
+
+echo "Installing open3d dependencies for ROS2 $TARGET_ROS_DISTRO on $ARCH architecture..."
+
+# Check CMake version only for source builds (ARM64)
+if [[ "$INSTALL_METHOD" == "source" ]]; then
+  echo "Checking CMake version for source build..."
+  cmake --version
+  if [ $? -ne 0 ]; then
+    echo "ERROR: CMake is not installed"
+    exit 1
+  fi
+  CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')
+  REQUIRED_CMAKE_VERSION="3.29.2"
+  if [ "$(printf '%s\n' "$REQUIRED_CMAKE_VERSION" "$CMAKE_VERSION" | sort -V | head -n1)" != "$REQUIRED_CMAKE_VERSION" ]; then
+    echo "ERROR: CMake version must be at least $REQUIRED_CMAKE_VERSION (found $CMAKE_VERSION)"
+    exit 1
+  fi
+  echo "CMake version $CMAKE_VERSION is sufficient for source build"
 fi
 
 python3 -m pip install --break-system-packages --no-cache-dir "mcap[ros2]"
@@ -51,40 +67,41 @@ apt-get update && \
     apt-get install -y libc++abi-dev libc++-dev liblua5.4-dev libomp-dev libgoogle-glog-dev libgflags-dev && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Open3D based on architecture
+if [[ "$INSTALL_METHOD" == "ppa" ]]; then
+  echo "Installing Open3D from PPA for AMD64 architecture..."
+  apt-get update && \
+      apt-get install -y software-properties-common && \
+      add-apt-repository -y ppa:roehling/open3d && \
+      apt-get update && \
+      apt-get install -y libopen3d-dev && \
+      rm -f /etc/apt/sources.list.d/roehling-ubuntu-open3d-*.list && \
+      apt-get update && \
+      apt-get clean && rm -rf /var/lib/apt/lists/*
+elif [[ "$INSTALL_METHOD" == "source" ]]; then
+  echo "Installing Open3D from source for ARM64 architecture..."
+  readonly OPEN3D_VERSION="0.19.0"
+  readonly OPEN3D_INSTALL_DIR="/usr/local"
 
-# Install Open3D (from ppa)
+  echo "Installing Open3D version ${OPEN3D_VERSION}..."
+  wget -qO- https://github.com/isl-org/Open3D/archive/refs/tags/v${OPEN3D_VERSION}.tar.gz | tar xzv -C /tmp
 
-# apt-get update && \
-#     apt-get install -y software-properties-common && \
-#     add-apt-repository -y ppa:roehling/open3d && \
-#     apt-get update && \
-#     apt-get install -y libopen3d-dev && \
-#     rm -f /etc/apt/sources.list.d/roehling-ubuntu-open3d-*.list && \
-#     apt-get update && \
-#     apt-get clean && rm -rf /var/lib/apt/lists/*
+  cd /tmp/Open3D-${OPEN3D_VERSION}
+  chmod +x util/install_deps_ubuntu.sh
+  DEBIAN_FRONTEND=noninteractive SUDO=command ./util/install_deps_ubuntu.sh assume-yes
 
-# Install Open3D (from source)
-readonly OPEN3D_VERSION="0.19.0"
-readonly OPEN3D_INSTALL_DIR="/usr/local"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=${OPEN3D_INSTALL_DIR} \
+      -DBUILD_SHARED_LIBS=ON \
+      -DBUILD_EXAMPLES=OFF \
+      -DBUILD_PYTHON_MODULE=OFF \
+      -DBUILD_GUI=OFF \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DDEVELOPER_BUILD=OFF ..
+  make -j$(nproc)
+  make install
+  cd /tmp
+  rm -rf Open3D-${OPEN3D_VERSION}
+fi
 
-echo "Installing Open3D version ${OPEN3D_VERSION}..."
-wget -qO- https://github.com/isl-org/Open3D/archive/refs/tags/v${OPEN3D_VERSION}.tar.gz | tar xzv -C /tmp
-
-cd /tmp/Open3D-${OPEN3D_VERSION}
-chmod +x util/install_deps_ubuntu.sh
-DEBIAN_FRONTEND=noninteractive SUDO=command ./util/install_deps_ubuntu.sh assume-yes
-
-mkdir build && cd build
-cmake -DCMAKE_INSTALL_PREFIX=${OPEN3D_INSTALL_DIR} \
-    -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_EXAMPLES=OFF \
-    -DBUILD_PYTHON_MODULE=OFF \
-    -DBUILD_GUI=OFF \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DDEVELOPER_BUILD=OFF ..
-make -j$(nproc)
-make install
-cd /tmp
-rm -rf Open3D-${OPEN3D_VERSION}
-
-echo "Open3d dependencies installed successfully for ROS2 $TARGET_ROS_DISTRO"
+echo "Open3D dependencies installed successfully for ROS2 $TARGET_ROS_DISTRO on $ARCH"
