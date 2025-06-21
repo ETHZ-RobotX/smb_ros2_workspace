@@ -22,22 +22,22 @@
 	],
 	"privileged": true,
 	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}:10", // for VNC
+		"DISPLAY": "${localEnv:DISPLAY}", // Will be overridden by post-create script when VNC is enabled
 		"VNC_ENABLED": "false", // VNC is disabled by default, set to true to enable VNC
 		"VNC_USERNAME": "robotx",
 		"VNC_PASSWORD": "robotx",
 		"QT_X11_NO_MITSHM": "1",
 		"MPLBACKEND": "Qt5Agg"
 	},
-	"forwardPorts": [
-		8455
-	],
-	"portsAttributes": {
-		"8455": {
-			"label": "KASMVNC web client",
-			"onAutoForward": "silent"
-		}
-	},
+	// "forwardPorts": [
+	// 	8455
+	// ],
+	// "portsAttributes": {
+	// 	"8455": {
+	// 		"label": "KASMVNC web client",
+	// 		"onAutoForward": "silent"
+	// 	}
+	// },
 	"otherPortsAttributes": {
 		"onAutoForward": "ignore"
 	},

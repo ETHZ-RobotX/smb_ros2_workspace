@@ -37,11 +37,38 @@ echo "source ${ROOT}/scripts/smb_bashrc.sh" >> ~/.bashrc
 git config core.autocrlf false # Prevent line ending conversion on Windows
 
 # kasmvnc setting up
+if [ "${VNC_ENABLED}" == "true" ]; then
 mkdir -p "/home/${USER}/.vnc"
 cp "${ROOT}/scripts/config/kasmvnc.yaml" "/home/${USER}/.vnc/kasmvnc.yaml"
 cp "${ROOT}/scripts/config/xstartup" "/home/${USER}/.vnc/xstartup"
-chmod +x "/home/${USER}/.vnc/xstartup"
+sudo chmod +x "/home/${USER}/.vnc/xstartup"
 echo "Setup kasmvnc done"
+
+echo "export DISPLAY=:10" >> ~/.bashrc
+echo "export DISPLAY=:10" >> ~/.zshrc
+
+# Configure VNC server
+expect <<EOF
+spawn vncserver :10
+
+expect "Provide selection number:"
+send "1\r"
+
+expect "Enter username (default: $USER):"
+send "${VNC_USERNAME}\r"
+
+expect "Password:"
+send "${VNC_PASSWORD}\r"
+
+expect "Verify:"
+send "${VNC_PASSWORD}\r"
+
+expect "Please choose Desktop Environment to run:"
+send "3\r"
+
+expect eof
+EOF
+fi
 
 # Setup tmux - create config directory and link config
 mkdir -p ~/.config/tmux

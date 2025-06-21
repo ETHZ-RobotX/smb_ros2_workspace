@@ -20,6 +20,9 @@ RUN useradd -m -s /bin/bash -u ${USER_UID} -g ${USER_GID} -G sudo ${USERNAME} \
     && echo ${USERNAME} ALL=\(ALL\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
     && chmod 0440 /etc/sudoers.d/${USERNAME}
 
+# Suppress the sudo hint message
+RUN touch /home/${USERNAME}/.sudo_as_admin_successful
+
 # Set the default user
 USER ${USERNAME}
 ENV USER=${USERNAME}
