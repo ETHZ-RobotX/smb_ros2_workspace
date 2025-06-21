@@ -6,7 +6,10 @@
 		"args": {
 			"BUILDKIT_INLINE_CACHE": "0",
 			"BASE_IMAGE": "ghcr.io/ethz-robotx/smb_ros2_workspace:main",
-			"VNC_RESOLUTION": "1920x1080x32"
+			"VNC_RESOLUTION": "1920x1080x32",
+			"USERNAME": "${localEnv:USER}",
+			"USER_UID": "1000",
+			"USER_GID": "1000"
 		}
 	},
 	"runArgs": [
@@ -24,12 +27,6 @@
 		"MPLBACKEND": "Qt5Agg"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"username": "${localEnv:USER}",
-			"userUid": "${localEnv:UID}",
-			"userGid": "${localEnv:GID}",
-			"configureZshAsDefaultShell": false
-		},
 		"ghcr.io/devcontainers/features/desktop-lite:1": {
 			"password": "robotx"
 		}
