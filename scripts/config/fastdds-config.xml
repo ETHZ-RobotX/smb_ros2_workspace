@@ -37,79 +37,13 @@
 
         <!-- Explicit peer list for targeted communication with specific hosts -->
         <initialPeersList>
-          <!-- SMB 261 -->
           <!-- Localhost -->
           <locator>
             <udpv4>
               <address>127.0.0.1</address>
             </udpv4>
           </locator>
-          <!-- NUC -->
-          <locator>
-            <udpv4>
-              <address>10.0.1.5</address>
-            </udpv4>
-          </locator>
-          <!-- Jetson -->
-          <locator>
-            <udpv4>
-              <address>10.0.1.7</address>
-            </udpv4>
-          </locator>
-          <!-- Raspberry Pi -->
-          <locator>
-            <udpv4>
-              <address>10.0.1.8</address>
-            </udpv4>
-          </locator>
-          <!-- SMB 262 -->
-          <locator>
-            <udpv4>
-              <address>10.0.2.5</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.2.7</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.2.8</address>
-            </udpv4>
-          </locator>
-          <!-- SMB 263 -->
-          <locator>
-            <udpv4>
-              <address>10.0.3.5</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.3.7</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.3.8</address>
-            </udpv4>
-          </locator>
-          <!-- SMB 264 -->
-          <locator>
-            <udpv4>
-              <address>10.0.4.5</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.4.7</address>
-            </udpv4>
-          </locator>
-          <locator>
-            <udpv4>
-              <address>10.0.4.8</address>
-            </udpv4>
-          </locator>
+          <!-- Add more peers here -->
         </initialPeersList>
       </builtin>
     </rtps>

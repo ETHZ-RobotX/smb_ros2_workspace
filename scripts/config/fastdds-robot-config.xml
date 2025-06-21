@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <!-- Custom UDP transport descriptor to prevent message fragmentation
+       Both FastDDS and network layer fragmentation can cause delivery failures
+       when fragments are lost, resulting in complete payload loss -->
+  <transport_descriptors>
+    <transport_descriptor>
+      <transport_id>smb_udp_transport</transport_id>
+      <type>UDPv4</type>
+      <maxMessageSize>65500</maxMessageSize>
+      <receiveBufferSize>204800</receiveBufferSize> <!-- 200 KB -->
+      <maxInitialPeersRange>100</maxInitialPeersRange>
+    </transport_descriptor>
+  </transport_descriptors>
+
+  <!-- Point-to-point unicast profile configuration to eliminate multicast traffic -->
+  <participant profile_name="cs_unicast_profile" is_default_profile="true">
+    <rtps>
+      <!-- Override default transports with our custom transport configuration -->
+      <userTransports>
+        <transport_id>smb_udp_transport</transport_id>
+      </userTransports>
+      <useBuiltinTransports>false</useBuiltinTransports>
+
+      <builtin>
+        <!-- Empty default locator configuration to rely on explicit peer list -->
+        <metatrafficUnicastLocatorList>
+          <locator/>
+        </metatrafficUnicastLocatorList>
+
+        <!-- Explicit peer list for targeted communication with specific hosts -->
+        <initialPeersList>
+          <!-- SMB 261 -->
+          <!-- Localhost -->
+          <locator>
+            <udpv4>
+              <address>127.0.0.1</address>
+            </udpv4>
+          </locator>
+          <!-- NUC -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.5</address>
+            </udpv4>
+          </locator>
+          <!-- Jetson -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.7</address>
+            </udpv4>
+          </locator>
+          <!-- Raspberry Pi -->
+          <locator>
+            <udpv4>
+              <address>10.0.1.8</address>
+            </udpv4>
+          </locator>
+          <!-- SMB 262 -->
+          <locator>
+            <udpv4>
+              <address>10.0.2.5</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.2.7</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.2.8</address>
+            </udpv4>
+          </locator>
+          <!-- SMB 263 -->
+          <locator>
+            <udpv4>
+              <address>10.0.3.5</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.3.7</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.3.8</address>
+            </udpv4>
+          </locator>
+          <!-- SMB 264 -->
+          <locator>
+            <udpv4>
+              <address>10.0.4.5</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.4.7</address>
+            </udpv4>
+          </locator>
+          <locator>
+            <udpv4>
+              <address>10.0.4.8</address>
+            </udpv4>
+          </locator>
+        </initialPeersList>
+      </builtin>
+    </rtps>
+  </participant>
+</profiles>
