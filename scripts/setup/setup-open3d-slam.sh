@@ -34,17 +34,21 @@ fi
 
 echo "Installing open3d dependencies for ROS2 $TARGET_ROS_DISTRO on $ARCH architecture..."
 
-# check cmake version, it should be 3.29.2
-cmake --version
-if [ $? -ne 0 ]; then
-  echo "ERROR: CMake is not installed"
-  exit 1
-fi
-CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')
-REQUIRED_CMAKE_VERSION="3.29.2"
-if [ "$(printf '%s\n' "$REQUIRED_CMAKE_VERSION" "$CMAKE_VERSION" | sort -V | head -n1)" != "$REQUIRED_CMAKE_VERSION" ]; then
-  echo "ERROR: CMake version must be at least $REQUIRED_CMAKE_VERSION (found $CMAKE_VERSION)"
-  exit 1
+# Check CMake version only for source builds (ARM64)
+if [[ "$INSTALL_METHOD" == "source" ]]; then
+  echo "Checking CMake version for source build..."
+  cmake --version
+  if [ $? -ne 0 ]; then
+    echo "ERROR: CMake is not installed"
+    exit 1
+  fi
+  CMAKE_VERSION=$(cmake --version | awk '/cmake version/ {print $3}')
+  REQUIRED_CMAKE_VERSION="3.29.2"
+  if [ "$(printf '%s\n' "$REQUIRED_CMAKE_VERSION" "$CMAKE_VERSION" | sort -V | head -n1)" != "$REQUIRED_CMAKE_VERSION" ]; then
+    echo "ERROR: CMake version must be at least $REQUIRED_CMAKE_VERSION (found $CMAKE_VERSION)"
+    exit 1
+  fi
+  echo "CMake version $CMAKE_VERSION is sufficient for source build"
 fi
 
 python3 -m pip install --break-system-packages --no-cache-dir "mcap[ros2]"
