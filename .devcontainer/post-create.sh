@@ -14,6 +14,10 @@ else
   exit 1
 fi
 
+# Setup fancy prompt
+chmod +x ${ROOT}/scripts/setup/setup-fancy-prompt.sh
+${ROOT}/scripts/setup/setup-fancy-prompt.sh ${USER}
+
 echo "export CMAKE_INCLUDE_PATH=/usr/include:\$CMAKE_INCLUDE_PATH" >> "${HOME}/.bashrc"
 echo "export CMAKE_LIBRARY_PATH=${LIB_PATH}:\$CMAKE_LIBRARY_PATH" >> "${HOME}/.bashrc"
 
@@ -32,11 +36,14 @@ echo "source ${ROOT}/scripts/smb_bashrc.sh" >> ~/.bashrc
 # git config
 git config core.autocrlf false # Prevent line ending conversion on Windows
 
-# Setup tmux
+# Setup tmux - create config directory and link config
 mkdir -p ~/.config/tmux
-ln -s ${ROOT}/.tmux.conf ~/.config/tmux/tmux.conf
+ln -sf ${ROOT}/.tmux.conf ~/.config/tmux/tmux.conf
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Clone tmux plugin manager if it doesn't exist
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Start tmux server in the background
 tmux new-session -d
