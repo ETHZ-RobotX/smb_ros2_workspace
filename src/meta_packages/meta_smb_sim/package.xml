@@ -32,6 +32,8 @@
   <depend>joy_panel_cpp</depend>
   <depend>topic_tools</depend>
   <depend>open3d_slam_ros</depend>
+  <depend>object_detection</depend>
+  <depend>object_detection_msgs</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

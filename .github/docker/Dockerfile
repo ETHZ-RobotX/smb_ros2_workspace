@@ -37,7 +37,9 @@ RUN apt-get update && \
       glances \
       net-tools \
       python3 \
+      python3-dev \
       python3-pip \
+      python3-venv \
       python-is-python3 \
       software-properties-common && \
     add-apt-repository universe && \
@@ -63,12 +65,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# install gitman for external repo dependency management
-RUN if grep -q "24.04" /etc/os-release; then \
-      pip install --no-cache-dir --break-system-packages gitman pre-commit; \
-    else \
-      pip install --no-cache-dir gitman pre-commit; \
-    fi
+COPY scripts/setup/requirements.txt /tmp/requirements.txt
+RUN pip install --break-system-packages -r /tmp/requirements.txt
+
+# Clean up
+RUN rm -f /tmp/requirements.txt
 
 # Install code formatting and linting tools
 RUN apt-get update && \
@@ -98,7 +99,6 @@ RUN /scripts/setup/setup-ros.sh
 
 # Install Graph MSF
 RUN /scripts/setup/setup-graph-msf.sh
-
 
 # Remove any existing user with UID 1000 and group with GID 1000
 RUN apt-get update && \
