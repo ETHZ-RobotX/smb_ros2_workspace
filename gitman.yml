@@ -4,7 +4,7 @@ groups: []
 sources:
   - name: smb_description_ros2
     repo: https://github.com/ETHZ-RobotX/smb_description_ros2.git
-    rev: main
+    rev: object_detection_working
     type: git
     links:
       - source: .
@@ -148,7 +148,7 @@ sources:
         target: src/visualization/joy_panel_cpp
   - name: object_detection
     repo: https://github.com/ETHZ-RobotX/smb_object_detection_ros2.git
-    rev: docker
+    rev: docker_working
     type: git
     links:
       - source: .
