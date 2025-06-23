@@ -1,12 +1,12 @@
 [Unit]
-Description=Synchronize system clock or PTP hardware clock (PHC)
-Documentation=man:phc2sys
+Description=Discipline system clock from PHC (Grandmaster NUC)
 After=ptp4l.service
+Requires=ptp4l.service
 
 [Service]
-Type=simple
-#sync all ptp network clocks(-a), first -r to include CLOCK_REALTIME, second -r makes CLOCK_REALTIME a time source
-ExecStart=/usr/sbin/phc2sys -a -r -r --step_threshold=1
+ExecStart=/usr/sbin/phc2sys -s CLOCK_REALTIME -c enp86s0 -w -m -S 1
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
