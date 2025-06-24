@@ -4,7 +4,7 @@ After=sys-subsystem-net-devices-eth0.device
 Requires=sys-subsystem-net-devices-eth0.device
 
 [Service]
-ExecStart=/usr/sbin/ptp4l -i eth0 -2 -m -s
+ExecStart=/usr/sbin/ptp4l -i eth0 -2 -m -s --step_threshold=1
 Restart=on-failure
 
 [Install]
