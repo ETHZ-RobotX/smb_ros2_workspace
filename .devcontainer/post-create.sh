@@ -33,6 +33,10 @@ echo "export HISTFILE=${ROOT}/.bash_history" >> ~/.bashrc
 echo "source ${ROOT}/scripts/smb_zshrc.sh" >> ~/.zshrc
 echo "source ${ROOT}/scripts/smb_bashrc.sh" >> ~/.bashrc
 
+# Fix gazebo 
+echo "export GZ_IP=127.0.0.1" >> ~/.bashrc
+echo "export GZ_IP=127.0.0.1" >> ~/.zshrc
+
 # git config
 git config core.autocrlf false # Prevent line ending conversion on Windows
 
