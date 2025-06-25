@@ -59,7 +59,7 @@ sources:
       - source: .
         target: src/estimation/holistic_fusion
   - name: smb_bringup
-    repo: https://github.com/ETHZ-RobotX/smb_bringup.git
+    repo: https://github.com/acpoll/smb_bringup.git
     rev: main
     type: git
     links:
@@ -72,6 +72,13 @@ sources:
     links:
       - source: .
         target: src/utils/smb_power_status
+  - name: ros2_utils
+    repo: https://github.com/acpoll/ros2_utils.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/utils/ros2_utils
   - name: smb_low_level_controller_ros2
     repo: https://github.com/ETHZ-RobotX/smb_lowlevel_controller_ros2.git
     rev: main
@@ -89,7 +96,7 @@ sources:
       - source: .
         target: src/planning/far_planner
   - name: tare_planner
-    repo: https://github.com/ETHZ-RobotX/tare_planner.git
+    repo: https://github.com/acpoll/tare_planner.git
     rev: main
     type: git
     links:
@@ -147,9 +154,16 @@ sources:
       - source: .
         target: src/visualization/joy_panel_cpp
   - name: smb_object_detection
-    repo: https://github.com/ETHZ-RobotX/smb_object_detection_ros2.git
-    rev: main
+    repo: https://github.com/moskitoo/smb_object_detection_ros2.git
+    rev: docker_working
     type: git
     links:
       - source: .
         target: src/perception/smb_object_detection
+  - name: smb_autonomous
+    repo: https://github.com/acpoll/smb_autonomous.git
+    rev: main
+    type: git
+    links:
+      - source: .
+        target: src/smb_autonomous

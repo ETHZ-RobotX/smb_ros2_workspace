@@ -120,3 +120,9 @@ dependencies/gitman.log
 # Ignore venv
 .venv/
 venv/
+
+detections
+rosbags/*
+src/detection/object_detection/models/*
+frames_*.gv
+frames_*.pdf
